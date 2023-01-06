@@ -1,0 +1,14 @@
+@keyframes slideUP {
+    from {transform: translateY(100vh)}
+    to {transform: translateY(85vh)}
+  }
+
+@media (max-width: 800px) {
+    #header-right-corner {
+        display: none;
+    }
+    
+    #header-right-corner-addTask {
+        display: unset;
+    }
+}

@@ -1,0 +1,96 @@
+<form class="add-task-form-style-board" id="myform" onsubmit="createTask(), startSlideUPAnimation(), closeBoardAddtaskPopupFilled(); return false">      
+    <h1>Add Task</h1>
+    <div class="flex margin-bottom-24 add-task-form-child">
+        <div class="add-task-column-left add-task-column flex column">
+            <div class="add-task-column-left-child flex column">
+                <span class=>Title</span>
+                <input type="text" id="title" required class="add-task-input margin-bottom-24" placeholder="Enter a title">
+            </div>
+            <div class="add-task-column-left-child flex column">
+                <span class=>Description</span>
+                <textarea name="description" id="description" required placeholder="Enter a description" class="add-task-textarea margin-bottom-24"></textarea>
+            </div>
+            <div class="add-task-column-left-child flex column">
+                <span class=>Category</span>
+                <div class="margin-bottom-24">
+                    <div class="dropdown-container">
+                        <div class="dropdown" id="category-dropdown-field" onclick="changeVisibility('category-dropdown')">
+                            <div id="dropdown-text-category" class="flex category-dropdown-field-text">Select task category</div>
+                            <img src="./assets/img/vector_2.png">
+                        </div>
+                        <div class="dropdown-content d-none" id="category-dropdown"></div>
+                        <div class="w-100 input-container d-none" id="new-category-input-ctn">  <!--displays when new category gets clicked-->   
+                            <input type="text" id="new-category-input" class="w-100 subtask-input" maxlength="50">
+                            <div class="flex">
+                                <img src="./assets/img/add_task_cancel.png" class="icon-subtask" onclick="changeVisibilityNewCategory(), removeClassFromSelectedColor()">
+                                |
+                                <img src="./assets/img/add_task_check.png" class="icon-subtask" onclick="addNewCategory()">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="category-color-selection-ctn" class="flex d-none"></div>
+                </div>
+            </div>
+            <div class="add-task-column-left-child flex column">
+                <span class=>Assigned to</span>
+                <div class="dropdown-container">
+                    <div class="dropdown" id="contacts-dropdown-ctn" onclick="changeVisibility('contacts-dropdown')">
+                        <span>Select contacts to assign</span>
+                        <img src="./assets/img/vector_2.png">
+                    </div>
+                    <div class="dropdown-content max-height-176 auto d-none" id="contacts-dropdown">
+                    </div>
+                    <div class="input-container d-none" id="invite-contact-ctn">
+                        <input class="w-100 subtask-input" id="input-invite-contact" type="email" placeholder="Contact email">
+                        <div class="flex">
+                            <img src="./assets/img/add_task_cancel.png" class="icon-subtask" onclick="changeVisibilityContactSection()">
+                            |
+                            <img src="./assets/img/add_task_check.png" class="icon-subtask" onclick="changeVisibilityContactSection(), sendInviteMail(event)">
+                        </div>
+                    </div>
+                </div>
+                <div id="contacts-icon-section" class="flex"></div>
+                <span class="d-none warning" id="guest-warning">Guest is not added to the task!</span>
+            </div>
+        </div>
+        <div class="add-task-column-right add-task-column">
+            <div class="w-100 flex column">
+                <span>Due Date</span>
+                <input type="date" id="due-date" required class="add-task-input margin-bottom-24" value="2023-05-01">
+            </div>
+            <div class="w-100 flex column">
+                <span>Prio</span>
+                <div class="add-task-prio-container margin-bottom-24" id="prio-container"></div>
+            </div>
+            <div class="w-100 flex column margin-bottom-24">
+                <span>Subtasks</span>
+                <div class="w-100 input-container subtask-input-container" id="subtask-placeholder-input-ctn" onclick="changeVisibilitySubtask(), focusOnInput('subtask-input')"> <!--displayed if subtask is not clicked-->   
+                    <input type="text" class="w-100 subtask-input" placeholder="Add new subtask">
+                    <img src="./assets/img/add_task_plus_icon.png" id="subtask-add-icon" class="icon-subtask">
+                </div>
+                <div class="w-100 subtask-input-container input-container d-none" id="subtask-input-ctn">  <!--displays if subtask is clicked-->   
+                    <input type="text" id="subtask-input" class="w-100 subtask-input" maxlength="50">
+                    <div class="flex">
+                        <img src="./assets/img/add_task_cancel.png" class="icon-subtask" onclick="clearSubtaskInput()">
+                        |
+                        <img src="./assets/img/add_task_check.png" class="icon-subtask" onclick="addSubtask()">
+                    </div>
+                </div>
+                <ul class="flex column" id="subtask-list-container"></ul>
+            </div> 
+        </div>
+    </div>
+    <div class="create-task-btn-container">
+        <button type="button" onclick="clearAddTask()" class="flex add-task-btn clear-btn" onmouseover="clearImageToLightBlue()" onmouseout="clearImageToDarkBlue()">
+            <span id="clear-btn-string">Clear</span> 
+            <img id="clear-image" src="./assets/img/clear-x-icon.png">
+        </button>
+        <button class="flex add-task-btn create-btn">
+            Create Task
+            <img src="./assets/img/check-small.png">
+        </button>
+    </div>
+</form>
+
+
+

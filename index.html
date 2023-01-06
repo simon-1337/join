@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-big.png">
+     <!-- CSS Loaded on every page -->
+     <link rel="stylesheet" href="font.css">
+     <link rel="stylesheet" href="style.css">
+     <!-- JS Loaded on every page -->
+     <script src="mini_backend.js"></script>
+    <script src="js/access.js"></script>
+     <script src="js/nav_template.js"></script>
+     <script src="js/header_template.js"></script>
+     <script src="js/popup.js"></script>
+     <script src="js/popup_template.js"></script>
+     <script src="js/header_profile.js"></script>
+     <!-- <script src="script.js"></script> -->
+    
+
+    <link rel="stylesheet" href="log_in.css">
+    <title>LogInToJoin</title>
+</head>
+
+<body onload="inits()">
+
+<div class="animationContainer">
+    <div class="navPool">
+            <img class="joinLogo" src="assets/img/logo-big2.png">
+            <img class="joinLogo2" src="assets/img/logo-big.png">
+
+
+
+
+        <div class="signContainer">
+            <span class="signText">Not a Join user?</span>
+            <a class="decoNone" href="sign_up.html"><div class="signButton">Sign up</div></a>
+        </div>
+    </div>
+
+
+    <div class="logPool">
+
+
+        <div class="logContainer">
+
+            
+                <form onsubmit="login(); return false;" class="logPool1 flex column w-100">
+                <div class="logo-and-underline flex column w-100">
+                    <span class="logText">Log in</span>
+                    <img class="underline" src="assets/img/underline.png">
+                </div>
+                <div class="input-and-check-and-btns flex column w-100">
+                    <div class="inputs">
+                        <div class="input-relative">
+                            <input id="email" class="input" type="text" placeholder="Email" required>
+                            <img class="case" src="assets/img/add-contact-email-icon.png">
+                        </div>
+                    
+                        <div class="input-relative">
+                            <input id="password" class="input" type="password" placeholder="Password" required>
+                            <img class="lock" src="assets/img/login-password-icon.png">
+                        </div>
+                    </div>
+
+                    <div  id="indexError" class="indexError d-none">Password or Email incorrect</div>
+
+                    <div class="check-and-btns flex column">
+                        <div class="checkPool">
+                        
+                            <div class="checkContainer">
+                                <input class="inputCheck" type="checkbox" placeholder="Password">
+                                <span class="checkText">Remember me</span>
+                            </div>
+                        
+                           
+
+                            <a class="forgotText" href="forgot_password.html">Forgot my password</a>
+                        
+                        </div>
+                    
+                        <div class="buttonContainer">
+                            <button class="signButton1">Log in</button>
+                            <a href="javascript:setGuestUser()"><button type="button" class="signButton2" ><span>Guest Log in</span></button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           
+
+
+        
+
+        <div class="signContainer2">
+            <span class="signText">Not a Join user?</span>
+            <a class="decoNone" href="sign_up.html"><div class="signButton">Sign up</div></a>
+        </div>
+    </div>
+ <div class="msgBox" id="msgBox"></div>
+    </div>
+
+    
+              
+           
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="summary.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-big.png">
+    <!-- CSS Loaded on every page -->
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- JS Loaded on every page -->
+    <script src="mini_backend.js"></script>
+    <script src="js/nav_template.js"></script>
+    <script src="js/header_template.js"></script>
+    <script src="js/add_task.js"></script>
+    <script src="js/add_task2.js"></script>
+    <script src="js/header_profile.js"></script>
+    <script src="script.js"></script>
+    <script src="js/board.js"></script>
+    <!-- <script src="js/access.js"></script> -->
+    <script src="js/popup.js"></script>
+    <script src="js/popup_template.js"></script>
+    <script src="js/summary.js"></script>
+    
+    
+    <!---isLoggedInn();--->
+
+</head>
+<body onload="init()">
+    <div class="page flex relative" id="page">
+        <div class="nav flex column" id="nav"></div>
+        <div class="wrapper flex column relative" id="wrapper">
+            <div class="popUp" id="popUp"></div>
+            <div class="header flex" id="header"></div>
+            <div class="content-container" id="content-container">
+                <p class="header-title-resp cursor-d">Kanban Project Management Tool</p>
+                <div class="animationContainer w-100">
+
+                    
+
+                    <div class="summary-pool w-100 h-100 flex column">
+                        <div class="header-summary w-100">
+                            <span class="header-text1">Summary</span>
+                            <img class="verticalLine" src="assets/img/verticalLine.png">
+                            <span class="header-text2">Everything in a nutshell!</span>
+                            <img class="linehorizontal" src="assets/img/linehorizontal.png">
+                        </div>
+                        <div class="pool-info-container w-100 h-100 flex">
+                            <div class="pool-infos flex column">
+                                <div class="task-info-container w-100 flex">
+                                    <div onclick="isLoggedInn()" class="task_info_box1 w-100 h-100"><span class="task-info-text"><span id="task-count1" class="task-info-count">0</span> Tasks in Board</span></div>
+                                    <div onclick="isLoggedInn()" class="task_info_box2 w-100 h-100"><span class="task-info-text"><span id="task-count2" class="task-info-count">0</span> Tasks in Progress</span></div>
+                                    <div onclick="isLoggedInn()" class="task_info_box3 w-100 h-100"><span class="task-info-text"><span id="task-count3" class="task-info-count">0</span> Awaiting Feedback</span></div>
+                                </div>
+                                <div class="flex">
+                                    <div class="priority-pool w-100 flex">     
+                                        <div class="priority-container h-100">
+                                            <div><div id="priorities-radius" class="priorities-radius"><img id="priority-Icon" class="priority-Icon" src="assets/img/orange.png"></div></div> 
+                                            <div class="priority-text-pool"><span id="priority-count" class="priority-count">0</span> <span id="priority-text" class="priority-text">Urgent</span></div>
+                                        </div>
+                                        <img class="verticalLineGrey" src="assets/img/verticalLineGrey.png">
+                                        <div class="date-container h-100">
+                                            <span id="date" class="date">Oktober 16, 2022</span>
+                                            <span class="deadline">Upcoming Deadline</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doAndDone flex w-100">
+                                    <div class="toDo flex w-100 h-100">
+                                        <img class="toDoImage" src="assets/img/summary-pencil-icon.png">
+                                        <span class="to-do-text"><span id="task-info-count" class="task-info-count">0</span>To-do</span>
+                                    </div>
+                                    <div class="done flex w-100 h-100">
+                                        <img class="doneImage" src="assets/img/summary-check-icon.png">
+                                        <span class="to-do-text"><span id="task-info-count2" class="task-info-count">0</span>Done</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="greet-container w-100">
+                                <span id="greet" class="greet"> </span> <span id="user" class="user"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="greet-container2">
+                <span id="greet2" class="greet2"></span> <span class="user2" id="user2"></span>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

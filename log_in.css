@@ -1,0 +1,645 @@
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.signContainer, .logPool {
+    -webkit-animation: fadeInFromNone 0.7s ease-out;
+    -moz-animation: fadeInFromNone 0.7s ease-out;
+    -o-animation: fadeInFromNone 0.7s ease-out;
+    animation: fadeInFromNone 0.7s ease-out;
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    20% {
+        display: block;
+        opacity: 0;
+    }
+
+    50% {
+        display: block;
+        opacity: 0;
+    }
+    75% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+
+.joinLogo {
+    width: 70px;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    
+    
+    animation: joinLogo 1s ease-in-out;
+    animation-direction: normal;
+    z-index: 1;
+}
+
+.joinLogo2 {
+    width: 8%;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+
+    animation: joinLogo2 1s ease-in-out;
+    animation-direction: normal;
+    z-index: 1;
+    display: none;
+}
+
+@keyframes joinLogo{
+    0% {
+      width: 200px;
+      left: 40%;
+      top: 40vh;
+      
+    }
+    50% {
+        width: 200px;
+        left: 40%;
+        top: 40vh;
+    }
+    100% {
+      left: 50px;
+      top: 50px;
+    }
+}
+
+@keyframes joinLogo2{
+    0% {
+      width: 200px;
+      left: 50%;
+      top: 40vh;
+    }
+    50% {
+        width: 200px;
+        left: 50%;
+        top: 40vh;
+    }
+    100% {
+      width: 55px;
+      left: 35px;
+      top: 35px;
+    }
+}
+
+.signContainer {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    right: 120px;
+    align-items: center;
+    gap: 20px;
+
+    /* -webkit-animation: fadeInFromNone 0.5s ease-out;
+    -moz-animation: fadeInFromNone 0.5s ease-out;
+    -o-animation: fadeInFromNone 0.5s ease-out;
+    animation: fadeInFromNone 0.5s ease-out; */
+}
+
+.signContainer2 {
+    display: none;
+    gap: 15px;
+}
+
+.signButton {
+    background-color: #2A3647;
+    width: 73px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 125ms, color 125ms, border 125ms, box-shadow 125ms ease-in-out;
+    font-weight: bold;
+   }
+
+   .signButton:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+   }
+
+   .signButton1, .signButton2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2A3647;
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 125ms, color 125ms, border 125ms, box-shadow 125ms ease-in-out;
+    font-size: 17px;
+    height: 100%;
+   }
+
+   .signButton1 {
+    width: 120px;
+    border: none;
+   }
+
+   .signButton2 {
+    width: 130px;
+    background-color: white;
+    border:#2A3647 1px solid;
+    color: #2A3647;
+   }
+
+   .signButton1:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+   }
+
+   .signButton2:hover {
+    color: #29ABE2;
+    border:#29ABE2 2px solid;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+   }
+
+.signText {
+    font-size: 20px;
+}
+
+.decoNone {
+    text-decoration: none;
+}
+
+.logPool {
+    background-color: #F6F7F8;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logContainer {
+    width: 600px;
+background-color: #FFFFFF;
+border-radius: 30px;
+position: relative;
+padding: 30px 130px;
+box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+.logPool1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo-and-underline {
+    align-items: center;
+    gap: 14px;
+}
+
+.underline {
+    width: 132px;
+    height: 4px;
+}
+
+.logText {
+    font-size: 60px;
+    font-weight:bold;
+}
+
+.input-and-check-and-btns {
+    
+    align-items: center;
+}
+
+.input-relative {
+    height: 44px;
+    width: 100%;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+    width: 100%;
+}
+
+.input {
+    padding: 0 0 0 12px;
+    border: 1px solid lightgray;
+    font-size: 15px;
+    outline: none;
+
+    height: 100%;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.case {
+    position: absolute;
+    right: 8%;
+    top: 27%;
+}
+
+.lock {
+    position: absolute;
+    right: 8%;
+    top: 27%;
+}
+
+.inputCheck {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.check-and-btns {
+    gap: 28px;
+    width: 85%;
+    padding-top: 25px;
+}
+
+.checkPool {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkContainer {
+    display: flex;
+    align-items: center;;
+}
+
+.forgotText {
+text-decoration: none;
+color: #94D5F1;
+font-size: 13px;
+font-family: 'Noto Sans', sans-serif;
+}
+
+.checkText {
+    font-size: 13px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    height: 44px;
+}
+
+.d-none {
+    display: none;
+}
+
+.indexError {
+    padding-top: 5px;
+    color: red;   
+}
+
+.input-relative {
+    position: relative;
+    height: 44px;
+}
+
+@media(max-width: 800px) {
+    .joinLogo {
+        width: 55px;
+        left: 35px;
+        top: 35px;
+    }
+
+    @keyframes joinLogo{
+        0% {
+          width: 200px;
+          left: 30%;
+          top: 40vh;
+          
+        }
+        50% {
+            width: 200px;
+            left: 30%;
+            top: 40vh;
+        }
+        100% {
+            width: 55px;
+            left: 35px;
+            top: 35px;
+        }
+    }
+}
+
+@media(max-width: 740px) {
+    .logPool {
+        margin-top: 50px;
+    }
+
+    .logContainer {
+        width: 490px;
+        padding: 30px 82px;
+    }
+
+    .signContainer {
+        right: 68px !important;
+    }
+}
+
+    @media(max-width: 530px) {
+        .logPool {
+            margin-top: 66px;
+            justify-content: space-evenly;
+            height: 89vh;
+        }
+    
+        .logContainer {
+            width: 350px;
+            padding: 30px;
+        }
+
+        .check-and-btns {
+            width: 100%;
+        }
+
+        .signContainer {
+        display: none;
+        }
+
+        .signContainer2 {
+            display: unset;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .underline {
+            width: 130px;
+            height: 4px;
+        }
+
+            
+            .checkPool {
+                flex-direction: column-reverse;
+                gap: 20px;
+            }
+
+            .buttonContainer {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+                height: 110px;
+            }
+            
+            .signButton1, .signButton2 {
+                width: 170px;
+                font-size: 14px;
+                padding: 14px;
+            }
+
+            .signButton1 {
+                border: none;
+            }
+
+            .logText {
+                font-size: 45px;
+            }
+
+            .underline {
+                width: 92px;
+            }
+
+    @media screen and (max-height: 815px) {
+        .logContainer {
+            padding: 8px 30px 16px 30px;
+        }
+    
+        .logPool1 {
+            gap: 13px;
+        }
+    
+        .logo-and-underline {
+            gap: 4px;
+        }
+    
+        .input-and-check-and-btns {
+            gap: 20px;
+        }
+    
+        .inputs {
+            gap: 20px;
+        }
+    
+        .check-and-btns {
+            gap: 20px;
+        }
+    
+        .checkPool {
+            gap: 12px;
+        }
+    }
+}
+
+
+
+        @media(max-width: 390px) {
+            .logContainer {
+                width: 320px;
+            }
+        }
+
+
+
+            @media(max-width: 350px) {
+                .joinLogo {
+                    z-index: 3;
+                }
+
+                @keyframes joinLogo{
+                    0% {
+                      width: 150px;
+                      left: 25%;
+                      top: 40vh;
+                      opacity: 0;
+                      z-index: 3;
+                    }
+                    25% {
+                        opacity: 0;
+                    }
+                    50% {
+                        width: 150px;
+                        left: 25%;
+                        top: 40vh;
+
+                        opacity: 0;
+                    }
+                    78% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                        width: 55px;
+                        left: 35px;
+                        top: 35px;
+                    }
+                }
+
+               .joinLogo2 {
+                    width: 70px;
+                    display: unset;
+                    opacity: 0;
+                   z-index: 3;
+                   
+                }
+
+                @keyframes joinLogo2{
+                    0% {
+                      width: 150px;
+                      left: 25%;
+                      top: 40vh;
+                      opacity: 1;
+                      z-index: 5;
+                    }
+                    25% {
+                        opacity: 1;
+                       
+                    }
+
+                    50% {
+                        width: 150px;
+                        left: 25%;
+                        top: 40vh;
+
+                        opacity: 1;
+                    }
+                    75% {
+                        opacity: 1;
+                    }
+                    100% {
+                      width: 55px;
+                      left: 35px;
+                      top: 35px;
+                      opacity: 0;
+                      display:none;
+                    }
+                }
+
+                .logContainer {
+                    width: 300px;
+                    padding: 20px;
+                    height: unset;
+                }
+
+                .logText {
+                font-size: 44px;
+                }
+            
+                .underline {
+                width: 92px;
+                }
+
+                .checkPool {
+                    width: 100%;
+                }
+
+                .input-and-check-and-btns {
+                    gap: 23px;
+                }
+
+                .input {
+                    width:87%;
+                }
+
+                .lock {
+                    right: 20%;
+                    top: 26.5%;
+                }
+
+                .case {
+                    right: 20%;
+                    top: 26.5%;
+                }
+
+                .signButton1, .signButton2 {
+                    font-size: 14px;
+                    width: 170px;
+                }
+
+                .signContainer {
+                    margin-top: 39px;
+                }
+
+                .logPool {
+                    padding-top: 124px;
+                    height: 100vh;
+                    margin-top: unset;
+                }
+            
+
+                .animationContainer {
+            -webkit-animation: intro 2s ease-in-out;
+            -moz-animation: intro 2s ease-in-out;
+            -o-animation: intro 2s ease-in-out;
+            animation: intro 2s ease-in-out;
+            
+           
+            height: 100vh;
+                }
+
+                @keyframes intro {
+                    0% {
+                        display: block;
+                        opacity: 1;
+                        background-color: #2A3647;
+                    }
+                    20% {
+                        display: block;
+                        opacity: 1;
+                        background-color: #2A3647;
+                    }
+                    40% {
+                        display: block;
+                        opacity: 1;
+                        background-color: #2A3647;
+                    }
+                    50% {
+                        display: block;
+                        opacity: 1;
+                        background-color: #2A3647;
+                    }
+                    75% {
+                        opacity: 1;
+                        display: block;
+                        opacity: 1;
+                    }
+                    90% {
+                        background-color: #2A3647;
+                        opacity: 1;
+                    }
+                    100% {
+                        background-color: #2A3647;
+                        display: block;
+                       opacity: 1;
+                    }
+            }
+    }
+    
+
+    

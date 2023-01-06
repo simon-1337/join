@@ -1,0 +1,945 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Inter";
+  font-size: 12px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f6f7f8;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.cursor-p {
+  cursor: pointer;
+}
+
+.cursor-d {
+  cursor: default;
+}
+
+.d-none {
+  display: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.header-summary {
+  display: flex;
+  align-items: center;
+}
+
+.header-text1 {
+  font-size: 48px;
+  margin-right: 40px;
+  font-weight: bold;
+}
+
+.header-text2 {
+  font-size: 24px;
+  margin-left: 20px;
+  color: #444e5d;
+}
+
+.summary-pool {
+  gap: 65px;
+}
+
+.pool-infos,
+.task-info-container,
+.doAndDone {
+  gap: 44px;
+}
+
+.pool-infos {
+  width: 110rem;
+}
+
+.task-info-container,
+.priority-pool,
+.doAndDone {
+  height: 183px;
+}
+
+.done,
+.toDo {
+  gap: 10px;
+}
+
+.task_info_box1 {
+  width: 165px;
+  height: 165px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  transition: transform 0.1s ease-out;
+  transform-origin: 2% 0%;
+}
+
+.task_info_box1:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+  /*animation: hoverEffekt 0.2s ease-out;*/
+}
+
+.task_info_box2 {
+  width: 165px;
+  height: 165px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  transition: transform 0.1s ease-out;
+  transform-origin: 2% 0%;
+}
+
+.task_info_box2:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.task_info_box3 {
+  width: 165px;
+  height: 165px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  transition: transform 0.1s ease-out;
+  transform-origin: 2% 0%;
+}
+
+.task_info_box3:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.task_info_box3:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+}
+
+.task-info-container {
+  justify-content: space-between;
+}
+
+.task-info-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 21px;
+  text-align: center;
+  height: 100%;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.task-info-count {
+  font-size: 52px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.priority-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.priority-text-pool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.priority-pool {
+  background-color: #ffffff;
+  border-radius: 24px;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.1s ease-out;
+  transform-origin: 2% 0%;
+}
+
+.priority-pool:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.priority-pool:hover .date {
+  color: white;
+}
+
+.priority-count {
+  font-size: 52px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.priority-text {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.date {
+  font-size: 19px;
+  font-family: "Poppins", sans-serif;
+  color: #2a3647;
+  font-weight: bold;
+}
+
+.deadline {
+  font-family: "Poppins", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.greet-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.greet {
+  font-size: 48px;
+  font-family: "Poppins", sans-serif;
+  color: #2a3647;
+}
+
+.greet2 {
+  font-size: 48px;
+  font-family: "Poppins", sans-serif;
+  color: #2a3647;
+}
+
+.user {
+  font-size: 74px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #29abe2;
+}
+
+.user2 {
+  font-size: 74px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #29abe2;
+}
+
+.doAndDone {
+  justify-content: space-between;
+}
+
+.todo,
+.done {
+  height: 100%;
+}
+
+.toDo {
+  border-radius: 24px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.1s ease-out;
+  transform-origin: 2% 0%;
+}
+
+.toDo:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.toDo:hover .toDoImage {
+  filter: invert(1);
+  mix-blend-mode: hard-light;
+  filter: contrast(2.5) invert(1);
+}
+
+.done {
+  height: 165px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease-out;
+  transform-origin: 2% 0%;
+}
+
+.done:hover {
+  background-color: #2a3647;
+  color: white;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.done:hover .doneImage {
+  filter: invert(1);
+  mix-blend-mode: hard-light;
+  filter: contrast(2.5) invert(1);
+}
+
+.toDoImage {
+  width: 61px;
+  height: 61px;
+}
+
+.doneImage {
+  width: 61px;
+  height: 61px;
+}
+
+.to-do-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 21px;
+  text-align: center;
+  height: 100%;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.animationContainer {
+  min-height: 100%;
+  padding: 60px 100px;
+}
+
+.greet-container2 {
+  display: none;
+}
+
+.linehorizontal {
+  display: none;
+}
+
+.priority-Icon {
+  filter: brightness(0) invert(1);
+}
+
+.priorities-Color {
+  filter: brightness(0) invert(1);
+}
+
+.lowColor {
+  filter: saturate(500%) contrast(700%) brightness(500%) sepia(60%)
+    hue-rotate(-602deg);
+}
+
+.priorities-radius-urgent {
+  background-color: #ff3d00;
+  width: 80px;
+  height: 80px;
+  border-radius: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.priorities-radius-mid {
+  background-color: #ffa800;
+  width: 80px;
+  height: 80px;
+  border-radius: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.priorities-radius-low {
+  background-color: #7ae229;
+  width: 80px;
+  height: 80px;
+  border-radius: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1600px) {
+  .animationContainer {
+    padding: 30px 70px 30px 100px;
+  }
+
+  .pool-infos,
+  .task-info-container,
+  .doAndDone {
+    gap: 27px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .animationContainer {
+    padding: 30px 0px 30px 100px;
+  }
+
+  .task-info-text {
+    font-size: 18px;
+  }
+
+  .greet {
+    font-size: 32px;
+  }
+
+  .user {
+    font-size: 50px;
+  }
+
+  .date-container {
+    margin-left: 43px;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .animationContainer {
+    padding: 30px 70px 30px 100px;
+  }
+
+  .pool-info-container {
+    justify-content: center;
+  }
+
+  .task-info-text {
+    font-size: 21px;
+  }
+
+  .greet-container {
+    display: none;
+  }
+
+  .date-container {
+    margin-left: 155px;
+  }
+
+  .content-container {
+    -webkit-animation: fadeInFromNone 0.7s ease-out;
+    -moz-animation: fadeInFromNone 0.7s ease-out;
+    -o-animation: fadeInFromNone 0.7s ease-out;
+    animation: fadeInFromNone 0.7s ease-out;
+    z-index: 1;
+  }
+
+  @keyframes fadeInFromNone {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+
+    20% {
+      display: block;
+      opacity: 0;
+    }
+
+    50% {
+      display: block;
+      opacity: 0;
+    }
+    75% {
+      display: block;
+      opacity: 0;
+    }
+
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  .greet-container2 {
+    -webkit-animation: introGreet 0.6s ease-out;
+    -moz-animation: introGreet 0.6s ease-out;
+    -o-animation: introGreet 0.6s ease-out;
+    animation: introGreet 0.6s ease-out;
+    display: unset;
+    display: flex;
+    margin-left: 40px;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    z-index: 0;
+  }
+
+  @keyframes introGreet {
+    0% {
+      display: block;
+      opacity: 1;
+    }
+    20% {
+      display: block;
+      opacity: 1;
+    }
+    40% {
+      display: block;
+      opacity: 1;
+    }
+    50% {
+      display: block;
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+      display: block;
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      display: block;
+      opacity: 0;
+    }
+  }
+
+  .animationContainer {
+    -webkit-animation: intro 2s ease-in-out;
+    -moz-animation: intro 2s ease-in-out;
+    -o-animation: intro 2s ease-in-out;
+    animation: intro 2s ease-in-out;
+
+    z-index: 1;
+  }
+
+  @keyframes intro {
+    0% {
+      display: block;
+
+      z-index: 3;
+    }
+    50% {
+      display: block;
+      opacity: 1;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .animationContainer {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .greet-container2 {
+    left: 15%;
+  }
+
+  .date-container {
+    margin-left: 113px;
+  }
+}
+
+@media (max-width: 800px) {
+  .animationContainer {
+    padding: 0 30px;
+    min-height: 0;
+  }
+
+  .task-info-text {
+    font-size: 16px;
+  }
+
+  .header-text1 {
+    font-size: 42px;
+  }
+
+  .linehorizontal {
+    display: unset;
+  }
+
+  .header-summary {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .verticalLine {
+    display: none;
+  }
+
+  .header-text2 {
+    margin-top: 20px;
+  }
+
+  .linehorizontal {
+    margin-top: 20px;
+  }
+
+  .pool-infos {
+    width: 45rem;
+  }
+
+  .task-info-container,
+  .priority-pool,
+  .doAndDone {
+    height: 130px;
+  }
+
+  .greet-container2 {
+    left: 15% !important;
+  }
+
+  .date-container {
+    margin-left: 35px;
+  }
+
+  .verticalLineGrey {
+    margin-left: 49px;
+  }
+}
+
+@media (max-width: 720px) {
+  .summary-pool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .summary-pool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toDo {
+    width: 208px;
+  }
+
+  .done {
+    width: 208px;
+  }
+
+  .header-text2 {
+    font-size: 24px;
+  }
+
+  .greet-container2 {
+    left: 15% !important;
+  }
+}
+
+@media (max-width: 590px) {
+  .greet-container2 {
+    left: 5% !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .task-info-container,
+  .priority-pool,
+  .doAndDone {
+    height: 112px;
+  }
+
+  .pool-infos,
+  .task-info-container,
+  .doAndDone {
+    gap: 15px;
+  }
+
+  .task-info-count {
+    font-size: 35px;
+  }
+
+  .summary-pool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .task-info-text {
+    font-size: 12px;
+  }
+
+  .priority-text {
+    font-size: 12px;
+  }
+
+  .verticalLineGrey {
+    height: 66px;
+    width: 4px;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+
+  .priority-count {
+    font-size: 36px;
+  }
+
+  .priority-Icon {
+    width: 22px;
+  }
+
+  .priorities-radius-low {
+    width: 60px;
+    height: 60px;
+  }
+
+  .to-do-text {
+    font-size: 15px;
+  }
+
+  .toDo {
+    width: 155px;
+    height: 120px;
+  }
+
+  .done {
+    width: 154px;
+    height: 120px;
+  }
+
+  .toDoImage {
+    width: 42px;
+    height: 42px;
+  }
+
+  .doneImage {
+    width: 42px;
+    height: 42px;
+  }
+
+  .user {
+    font-size: 45px;
+  }
+
+  .greet {
+    font-size: 39px;
+  }
+
+  .greet-container2 {
+    top: 50%;
+    left: 15% !important;
+  }
+
+  .task_info_box1:hover {
+    background-color: unset;
+    color: unset;
+    background-color: #ffffff;
+    transform: unset;
+  }
+
+  .task_info_box2:hover {
+    background-color: unset;
+    color: unset;
+    background-color: #ffffff;
+    transform: unset;
+  }
+
+  .task_info_box3:hover {
+    background-color: unset;
+    color: unset;
+    background-color: #ffffff;
+    transform: unset;
+  }
+
+  .priority-pool:hover {
+    background-color: #ffffff;
+
+    color: unset;
+    transform: unset;
+  }
+
+  .priority-pool:hover .date {
+    color: unset;
+    color: #2a3647;
+  }
+
+  .toDo:hover {
+    background-color: unset;
+    background-color: #ffffff;
+    color: unset;
+    cursor: pointer;
+    transform: unset;
+  }
+
+  .done:hover {
+    background-color: unset;
+    background-color: #ffffff;
+    color: unset;
+    cursor: pointer;
+    transform: unset;
+  }
+
+  .toDo:hover .toDoImage {
+    filter: unset;
+    mix-blend-mode: unset;
+    filter: unset;
+  }
+
+  .done:hover .doneImage {
+    filter: unset;
+    mix-blend-mode: unset;
+    filter: unset;
+  }
+
+  .user2 {
+    font-size: 49px;
+  }
+
+  .greet2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 430px) {
+  .greet-container2 {
+    top: 50%;
+    left: 5% !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .task-info-container,
+  .priority-pool,
+  .doAndDone {
+    height: 90px;
+  }
+
+  .priority-container {
+    margin-left: 14px;
+  }
+
+  .date-container {
+    margin-left: 13px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .animationContainer {
+    padding: 0 10px 90px;
+  }
+}
+
+/* ########## MAX-HEIGHT: 700px ########## */
+@media screen and (max-height: 820px) {
+  @media screen and (max-width: 1600px) {
+    .pool-infos {
+      width: 72rem;
+    }
+
+    .task-info-container,
+    .priority-pool,
+    .doAndDone {
+      height: 130px;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    .task-info-text {
+      font-size: 14px;
+    }
+
+    .date-container {
+      margin-left: 54px;
+    }
+  }
+
+  @media screen and (max-width: 1180px) {
+    .pool-infos {
+      width: 50rem;
+    }
+  }
+
+  @media screen and (max-width: 1110px) {
+    .summary-pool {
+      gap: 45px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .summary-pool {
+      gap: 22px;
+    }
+
+    .animationContainer {
+      padding: 0 30px 105px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .pool-infos,
+    .task-info-container,
+    .doAndDone {
+      gap: 9px;
+    }
+
+    .task-info-container,
+    .priority-pool,
+    .doAndDone {
+      height: 93px;
+    }
+
+    .task-info-text {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .task-info-text {
+      font-size: 10px;
+    }
+  }
+
+  .date-container {
+    margin-left: 54px;
+  }
+}

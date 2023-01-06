@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="add_task.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-big.png">
+    <!-- CSS Loaded on every page -->
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board_responsive.css">
+    <!-- JS Loaded on every page -->
+    <script src="mini_backend.js"></script>
+    <script src="js/header_profile.js"></script>
+    <script src="script.js"></script>
+    <script src="js/nav_template.js"></script>
+    <script src="js/header_template.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/popup_template.js"></script>
+    <!-- JS needed here -->
+    <script src="js/add_task.js"></script>
+    <script src="js/add_task2.js"></script>
+    <script src="js/add_task_template.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/board_template.js"></script>
+    <script src="js/edit_task.js"></script>
+
+   
+</head>
+<body onload="init()">
+    <div class="top-page relative">
+        <div class="page flex" id="page">
+            <div class="nav flex column" id="nav"></div>
+            <div class="popUp" id="popUp"></div>
+            <div class="wrapper flex column relative" id="wrapper">
+                <div class="header flex" id="header"></div>
+                <div class="content-container relative" id="content-container">
+                    <p class="header-title-resp cursor-d">Kanban Project Management Tool</p>
+                    <div class="board-wrapper">
+                        <div class="board-container flex column">
+                            <div class="board-header flex">
+                                <div class="board-header-left flex">
+                                    <p class="bold">Board</p>
+                                    <img class="board-header-addTask-button-resp cursor-p" onclick="openBoardAddtaskPopup()" src="assets/img/board-add-task-icon.png">
+                                </div>
+                                <div class="board-header-right flex">
+                                    <div class="board-header-search-wrapper relative flex">
+                                        <div class="board-header-search-container flex" id="board-header-search-container">
+                                            <div class="board-header-search-input-container flex" id="board-header-search-input-container">
+                                                <input class="board-header-search-input w-100 h-100" id="board-header-search-input" placeholder="Find Task" onblur="narrowInputField()" onfocus="widerInputField()" onkeyup="searchTasks()"></input>
+                                            </div>
+                                            <img class="board-search-icon cursor-p" id="board-search-icon" src="assets/img/search-icon.png">
+                                        </div>
+                                        <div class="board-header-search-input-and-results-popup w-100 h-100 flex column d-none" id="board-header-search-input-and-results-popup">
+                                            <input class="board-header-search-input-popup h-100 w-100" id="board-header-search-input-popup" type="text" placeholder="Find Task" onkeyup="taskFilter()" focus autofocus onclick="doNotClose(event)">
+                                            <div class="board-header-search-results-popup absolute flex column d-none" id="board-header-search-results-popup"></div>
+                                        </div>
+                                    </div>
+                                    <div class="board-header-addTask-button flex cursor-p" onclick="openBoardAddtaskPopup()">
+                                        <p class="bold">Add task</p>
+                                        <img class="board-white-plus-image" src="assets/img/board-add-task-icon.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-content flex" id="board-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

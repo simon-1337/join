@@ -1,0 +1,48 @@
+h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+.help-inner-wrapper {
+    font-size: 24px;
+}
+
+.first-section, .second-section {
+    gap: 24px;
+}
+
+.subtitles {
+    margin-top: 24px;
+}
+
+.description-steps {
+    gap: 12px;
+}
+
+@media screen and (max-width: 1400px) {
+    .help-inner-wrapper {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 1010px) {
+    .help-inner-wrapper {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 42px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .help-inner-wrapper {
+        font-size: 10px;
+    }
+}

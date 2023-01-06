@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="stylesheet" href="help.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-big.png">
+    <!-- CSS Loaded on every page -->
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="legal_notice.css">
+    <!-- JS Loaded on every page -->
+    <script src="mini_backend.js"></script>
+    <script src="js/header_profile.js"></script>
+    <script src="script.js"></script>
+    <script src="js/nav_template.js"></script>
+    <script src="js/header_template.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/popup_template.js"></script>
+    
+</head>
+<body onload="renderNav();renderHeader();renderPopups()">
+    <div class="top-page relative">
+        <div class="page flex relative" id="page">
+            <div class="nav flex column" id="nav"></div>
+            <div class="wrapper flex column relative" id="wrapper">
+                <div class="popUp" id="popUp"></div>
+                <div class="header flex" id="header"></div>
+                <div class="content-container" id="content-container">
+                    <div class="help-wrapper">
+                        <div class="help-inner-wrapper w-100 h-100">
+                            <h1>Help</h1>
+                            <div class="first-section flex column">
+                                <h3 class="subtitles">What is Join?</h3>
+                                <p>
+                                    Join is a task management tool that utilizes a kanban board to help you and your team stay organized and on track. 
+                                    It is ideal for organizing tasks within a project or business process, and allows you to work more efficiently with your team. 
+                                    With Join, you can keep all of your tasks in focus and never miss a deadline again. 
+                                    Start using Join today to boost your team's productivity!
+                                </p>
+                            </div>
+                            <div class="second-section flex column">
+                                <h3 class="subtitles">How to use Join?</h3>
+                                <div class="description-steps flex">
+                                    <h3>1. </h3>
+                                    <p>
+                                        Using Join, you can easily create tasks with a title, description, and category. 
+                                        You can also assign tasks to other members of your team or invite new contacts to join. 
+                                        Additionally, you can set a due date for the task and add subtasks to further break down the task into smaller, more manageable pieces.
+                                    </p>
+                                </div>
+                                <div class="description-steps flex">
+                                    <h3>2.</h3>
+                                    <p>
+                                        With Join's kanban board, you can easily view the current status of your tasks and make updates as needed. 
+                                        Simply drag and drop a task to change its status, or edit the task details as needed. 
+                                        This makes it easy to stay on top of your work and ensure that everything is moving forward as planned.
+                                    </p>
+                                </div>
+                                <div class="description-steps flex">
+                                    <h3>3.</h3>
+                                    <p>
+                                        By adding team members to your contact list, you can easily assign tasks directly to them. 
+                                        This makes it convenient to keep track of your team's progress and stay on top of your work.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

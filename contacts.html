@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="contacts.css">
+    <link rel="stylesheet" href="contacts_responsive.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-big.png">
+    <!-- CSS Loaded on every page -->
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- JS Loaded on every page -->
+    <script src="mini_backend.js"></script>
+    <script src="js/header_profile.js"></script>
+    <script src="script.js"></script>
+    <script src="js/nav_template.js"></script>
+    <script src="js/header_template.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/popup_template.js"></script>
+    <script src="js/contacts.js"></script>
+    <script src="js/contacts_template.js"></script>
+    <!-- FOR THE CONTACT INFO ADDTASK POPUP -->
+    <link rel="stylesheet" href="add_task.css">
+    <link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="board_responsive.css">
+    <script src="js/add_task.js"></script>
+    <script src="js/add_task2.js"></script>
+    <script src="js/add_task_template.js"></script>
+    <script src="js/edit_task.js"></script>
+    
+</head>
+<body onload="init()">
+    <div class="top-page relative">
+        <div class="page flex" id="page">
+            <div class="nav flex column" id="nav"></div>
+            <div class="popUp" id="popUp"></div>
+            <div class="wrapper flex column relative" id="wrapper">
+                <div class="header flex" id="header"></div>
+                <div class="content-container relative" id="content-container">
+                    <div class="contacts-wrapper flex w-100 h-100">
+                        <div class="contacts-list-wrapper flex column">
+                            <div class="contacts-list-btn-resp-container fixed w-100">
+                                <div class="contacts-list-btn-resp contacts-info-btn cursor-p flex" onclick="openContactsNewContactPopup()">
+                                    <p>New contact</p>
+                                    <img src="assets/img/new-contacts-icon.png">
+                                </div>
+                            </div>
+                            <div class="contacts-list-overflow-container">
+                                <div class="contacts-list flex column w-100" id="contacts-list"></div>
+                            </div>
+                        </div>
+                        <div class="contacts-info-wrapper w-100 relative">
+                            <div class="contacts-info-container w-100 h-100 flex column">
+                                <div class="contacts-info-headline w-100 flex">
+                                    <p class="contacts-info-headline-big">Contacts</p>
+                                    <img src="assets/img/verticalLine.png">
+                                    <p class="contacts-info-headline-smaller">Better with a team</p>
+                                </div>
+                                <div class="contacts-info-popup-container" id="contacts-info-popup-container"></div>
+                                <div class="contacts-info-btn-container flex w-100">
+                                    <div class="contacts-info-btn cursor-p flex" onclick="openContactsNewContactPopup()">
+                                        <p>New contact</p>
+                                        <img src="assets/img/new-contacts-icon.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popUp-responsive" id="popUp-responsive"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

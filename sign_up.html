@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-big.png">
+    <!-- CSS Loaded on every page -->
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- JS Loaded on every page -->
+    <script src="mini_backend.js"></script>
+    <script src="js/access.js"></script>
+    <script src="js/header_template.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/popup_template.js"></script>
+
+    <link rel="stylesheet" href="sign_up.css">
+    <script src=""></script>
+    <title>Sign Up</title>
+</head>
+
+<body onload="inits()">
+
+     <img class="joinLogo" src="assets/img/logo-big2.png">
+
+
+    <div class="logPool">
+       
+        
+
+            <form onsubmit="addUser(); return false;" class="logContainer">
+            <div class="header-signup">
+                <a href="index.html"><img class="arrow" src="assets/img/arrowBlue.png"></a>
+                <a href="index.html"><img class="arrowBack hidden" src="assets/img/back-arraw.png"></a>
+                
+                <div class="title flex column w-100">
+                    <span class="logText">Sign Up</span>
+                    <img class="underline" src="assets/img/underline.png">
+                </div>
+            </div>
+
+                       <div class="inputs-and-btn flex column w-100">
+                <div class="inputs flex column">
+                    <div class="input-relative w-100">
+                        <input required id="username" class="input" type="text" placeholder="Name">
+                        <img class="name" src="assets/img/add-contact-name-icon.png">
+                    </div>
+
+                    <div class="input-relative w-100">
+                        <input required id="email" class="input" type="email" placeholder="Email">
+                        <img class="case" src="assets/img/add-contact-email-icon.png">
+                    </div>
+
+                    <div class="input-relative w-100">
+                        <input required id="password" class="input" type="password" placeholder="Password"> 
+                        <img class="lock" src="assets/img/login-password-icon.png">
+                    </div>
+                </div>
+
+                <div>
+                    <a class="decoNone" href="/#"><button class="signButton" class="d-none">Sign up</button></a>
+            
+                </div>
+            </div>
+
+       
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,660 @@
+.bold {
+    font-weight: bold;
+}
+
+.black {
+    color: black;
+}
+
+.board-wrapper {
+    width: 100%;
+    min-height: 100%;
+    padding: 60px 50px;
+    background-color: #F6F7F8;
+}
+
+.board-container {
+    width: 100%;
+    height: 100%;
+}
+
+.board-header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.board-header p {
+    font-size: 48px;
+}
+
+.board-header-right {
+    justify-content: space-between;
+    align-items: center;
+    max-width: 370px;
+    width: 100%;
+    height: 38px;
+}
+
+.board-header-search-wrapper {
+    align-items: center;
+    width: 220px;
+    height: 100%;
+    border: 1px solid gray;
+    padding: 0 8px 0 14px;
+    background-color: white;
+    border-radius: 7px;
+    cursor: text;
+}
+
+.board-header-search-container {
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.board-header-search-input-container {
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    border-right: 1px solid lightgray;
+}
+
+.board-header-search-input {
+    cursor: text;
+    border: none;
+    outline: none;
+}
+
+.board-header-search-input:empty::before {
+    content: "Find Task";
+    color: lightgray;
+    font-size: 14px;
+}
+
+.board-search-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+/* ########## SEARCH POPUP */
+
+.board-header-search-popup-full {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.board-header-search-popup-container {
+    top: 148px;
+    left: 0;
+    padding: 0 65px 0 220px;
+}
+
+.board-header-search-input-and-results-popup {
+    z-index: 2;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.board-header-search-input-popup {
+    align-items: center;
+    min-width: 192px;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: 14px;
+}
+
+.board-header-search-results-popup {
+    top: 40px;
+    left: 0px;
+    width: 98%;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 15px 0 15px 15px;
+    gap: 10px;
+    background-color: white;
+}
+
+.search-result {
+    text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+.search-result:last-child {
+    border: none;
+    padding-bottom: 0;
+}
+
+.search-result-ticket-category-point {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.search-result-ticket-category {
+    color: white;
+    font-size: 8px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+.search-result-p-container {
+    color: #566375;
+    max-width: 150px;
+    gap: 5px;
+}
+
+.search-result-p-container .search-result-p {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    max-height: 64px;
+}
+
+.search-result-p-container p:nth-child(2) {
+    font-size: 12px;
+}
+
+.search-result-p-container:hover {
+    color: black;
+}
+
+.search-result-ticket-contact {
+    padding: 6px 6px;
+    border-radius: 50%;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    margin: 0px -3px 0px 0px;   
+}
+
+/* ########## */
+
+.board-header-addTask-button {
+    align-items: center;
+    justify-content: space-between;
+    width: 103px;
+    height: 100%;
+    background-color: #2A3647;
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+    transition: background-color 125ms, color 125ms, border 125ms, box-shadow 125ms ease-in-out;
+}
+
+.board-header-addTask-button:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.board-header-addTask-button p {
+    font-size: 16px;
+}
+
+.board-white-plus-image {
+    width: 12px;
+    height: 12px;
+}
+
+.board-header-addTask-button-resp {
+    display: none;
+}
+
+.board-content {
+    justify-content: space-between;
+    padding-top: 60px;
+    gap: 30px;
+}
+
+.board-column {
+    height: 100%;
+    max-width: 397px;
+    width: 100%;
+    gap: 20px;
+}
+
+.board-column-header {
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #2A3647;
+    padding: 0 5px;
+}
+
+.board-column-header-plus {
+    justify-content: center;
+    align-items: center;
+    color: #2A3647;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+    padding: 3px 3px 8px;
+    width: 24px;
+    height: 24px;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.board-column-header-plus:hover {
+    border: 1px solid #29ABE2;
+    color: #29ABE2;
+}
+
+
+/* ########## TICKET  */
+.ticket-container {
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 18px;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-height: 400px;
+    gap: 15px;
+}
+
+.board-tickets {
+    gap: 16px;
+    padding-bottom: 20px;
+}
+
+.board-tickets .ticket-container:active {
+    box-shadow: 0.5px 2px 4px 3px rgb(0 0 0 / 5%);
+    transform: rotate(2.5deg);
+}
+
+.ticket-category-container {
+    width: 100%;
+    color: white;
+}
+
+.ticket-category {
+    padding: 4px 25px;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.ticket-description-container {
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.ticket-description-title {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ticket-description {
+    font-size: 16px;
+    color: rgba(0,0,0,0.4);
+    line-height: 120%;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.process-bar-container {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 22px;
+}
+
+.process-bar {
+    width: 100%;
+    max-width: 600px;
+    height: 20px;
+}
+
+.process-state {
+    min-width: 55px;
+}
+
+.ticket-footer-container {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px 0 0;
+}
+
+.ticket-contact {
+    padding: 10px 8px;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #FFFFFF;
+    margin: 0px -6px 0px 0px;
+}
+
+.contact-placeholder {
+    background-color: #2A3647;
+    color: white;
+}
+
+.state-img {
+    width: 16px;
+}
+
+.noTask {
+    display: none;
+}
+
+.onhold-container-last {
+    display: block;
+}
+
+
+.onhold-container-first {
+    display: none;
+}
+
+.highlight-area {
+    background-color: transparent;
+    border: 2px dotted #d9d8d8;
+    border-radius: 30px;
+}
+
+.no-highlight-area {
+    border: none;
+}
+
+.highlight-area-more {
+    border: 2px dotted #d2d1d1;
+}
+
+
+.ticket-highlight {
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.6);
+    transform: rotate(2.5deg);
+} 
+
+/* ########## TICKET INFO POPUP ########## */
+.board-ticket-info-popup-full {
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.ticket-info-popup-container {
+    width: 40%;
+    height: 90%;
+    font-size: 20px;
+    padding: 40px 0;
+    z-index: 3;
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+}
+
+.ticket-info-popup-inner-container {
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.ticket-info-popup-wrapper {
+    gap: 30px;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.ticket-info-popup-category-container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-info-popup-category > p {
+    border-radius: 5px;
+    color: white;
+    padding: 4px 28px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.ticket-info-popup-title > p {
+    font-size: 50px;
+    font-weight: bold;
+    color: #2A3647;
+}
+
+.ticket-info-popup-date-and-prio-and-assignedTo {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ticket-info-popup-date {
+    gap: 12px;
+}
+
+.ticket-info-popup-date p:nth-child(1) {
+    font-weight: bold;
+}
+
+.ticket-info-popup-prio {
+    gap: 15px;
+    align-items: center;
+}
+
+.ticket-info-popup-prio > p {
+    font-weight: bolder;
+}
+
+.ticket-info-popup-prio-wrapper {
+    color: white;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 16px;
+    border-radius: 8px;
+    font-weight: 300;
+}
+
+.ticket-info-popup-prio-image {
+    width: 14px;
+    height: 10px;
+    margin-top: 1px;
+}
+
+.ticket-info-popup-assignedTo {
+    gap: 15px;
+}
+
+.ticket-info-popup-assignedTo > p {
+    font-weight: bold;
+}
+
+.ticket-info-popup-member {
+    align-items: center;
+    gap: 20px;
+}
+
+.ticket-info-popup-member-circle {
+    font-size: 12px;
+    width: 29px;
+    height: 29px;
+    padding: 3px;
+}
+
+.ticket-info-popup-cross {
+    width: 30px;
+    height: 30px;
+}
+
+.ticket-info-popup-edit-container {
+    justify-content: flex-end;
+}
+
+.ticket-info-popup-edit {
+    justify-content: center;
+    align-items: center;
+    background-color: #2A3647;
+    border-radius: 8px;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    transition: background-color 125ms ease-in-out;
+}
+
+.ticket-info-popup-edit:hover {
+    background-color: #29ABE2;
+}
+
+.ticket-info-popup-edit > img {
+    width: 20px;
+}
+
+.ticket-info-popup-backArrow {
+    display: none;
+}
+
+.ticket-info-popup-editting-ok-btn-container {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ticket-info-popup-editting-ok-btn {
+    align-items: center;
+    background-color:#2A3647 ;
+    color: white;
+    padding: 11px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    gap: 4px;
+    transition: background-color 125ms, box-shadow 125ms ease-in-out;
+}
+
+.ticket-info-popup-editting-ok-btn:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-info-popup-editting-ok-btn > img {
+    width: 22px;
+    height: 22px;
+}
+
+/* ########## POPUP BOARD-ADDTASK ########## */
+.board-addtask-popup-full {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 3;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.opa-1 {
+    opacity: 1;
+}
+
+.showBackgroundAnimation {
+    animation: showBackground 125ms ease-in;
+}
+
+.hideBackgroundAnimation {
+    animation: hideBackground 125ms ease-in;
+}
+
+@keyframes showBackground {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes hideBackground {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.ticket-info-popup-inner-container {
+    overflow-y: auto;
+}
+
+.ticket-info-popup-inner-container > .add-task-form-style-board-wrapper {
+    height: 100%;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.board-addtask-popup-header-resp {
+    display: none;
+}
+
+.board-addtask-popup {
+    width: 80%;
+    height: 85%;
+    max-height: 100%;
+    padding: 40px;
+    background-color: white;
+    border-radius: 30px;
+    transform: translateX(100vw);
+    transition: transform 125ms ease-in-out;
+}
+
+.board-addtask-popup-content {
+    overflow-y: auto;
+}
+
+.board-addtask-popup-content .content-container {
+    background-color: white;
+}
+
+.board-addtask-popup-slideIn {
+    transform: translateX(0);
+}
+
+.board-addtask-popup-slideOut {
+    transform: translateX(100vw);
+}
+
+.board-addtask-popup-cross {
+    top: 56px;
+    right: 76px;
+}
+
+/*Slide-Up Animation for creating a task*/
+
+@keyframes slideUP {
+    from {transform: translateY(100vh)}
+    to {transform: translateY(70vh)}
+}
