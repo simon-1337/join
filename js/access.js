@@ -1,5 +1,4 @@
-setURL('https://gruppe-348.developerakademie.net/smallest_backend_ever');
-
+setURL('https://simon-besenbaeck.developerakademie.net/smallest_backend_ever');
 //Delete local Storage items
 localStorage.removeItem('usersEmail');
 localStorage.removeItem('currentUserHeaderData');
@@ -12,8 +11,6 @@ let usersEmail;
 
 let newUser = {
     'name': '',
-    'valid'   : false,
-    'loggedIn': false,
     'abbreviation':'',
     'email'   : '',
     'password': '',
@@ -23,8 +20,6 @@ let newUser = {
 
 let newUserContact = {
     'name': '',
-    'valid'   : false,
-    'loggedIn': false,
     'abbreviation': '',
     'email'   : '',
     'phone'   : '',
@@ -35,21 +30,35 @@ async function inits() {
     await downloadFromServer();
     users =  await JSON.parse(backend.getItem('users')) || [];
     usersContact =  await JSON.parse(backend.getItem('usersContact')) || [];
+    console.clear();
 }
 
 /**
  * This function manages following:
  * - Checking if array is empty or not for various actions
  * 
- *  */ 
+ */ 
 async function addUser() {
     let userName = document.getElementById('username');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    let initials = getNameLetters(userName);
     userName = checkAndGetName(userName);
+    let initials = getNameLetters(userName);
     if(users.length == 0) await pushUser(userName, email, password, initials);
     else await checkMail(userName, email, password, initials);
+    console.clear();
+}
+
+/** That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. */
+function checkAndGetName(userName) {
+    let name = userName.value.split(' ');
+    name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1);
+    if(name.length == 1) return name[0] + ' ' + name[0].charAt(0);
+    else {
+        name[1] = name[1].slice(0, 1).toUpperCase() + name[1].slice(1);
+        return name[0] + ' ' + name[1];
+    }
+
 }
 
 /**
@@ -57,22 +66,11 @@ async function addUser() {
  * @returns 
  */
 function getNameLetters(userName) {
-    let name = userName.value.split(' ');
+    let name = userName.split(' ');
     let firstLetter = name.toString().charAt(0).toUpperCase();
-    if(name.length == 1) return firstLetter + firstLetter;
-    else {
-        let secondLetter = name[1].toString().charAt(0).toUpperCase();
-        return firstLetter + secondLetter;
-    }
+    let secondLetter = name[1].toString().charAt(0).toUpperCase();
+    return firstLetter + secondLetter;
 }
-
-/** That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. */
-function checkAndGetName(userName) {
-    let name = userName.value.split(' ');
-    if(name.length == 1) return `${name} ${name[0].charAt(0)}`;
-    else return name;
-}
-
 
 /**
  * This function manages following:
@@ -84,7 +82,6 @@ async function checkMail(userName, email, password, initials) {
     if (users.find(o => o.email == email.value)) alert('Diese E-Mail ist bereits registriert!');
     else await pushUser(userName, email, password, initials);
 }
-
 
 /**
  * This function manages following:
@@ -98,7 +95,7 @@ async function pushUser(userName, email, password, initials) {
     let color = giveColor();
     addingValuesToUser(userName, email, password, initials , color)
     addingValuesToUsersContact(userName, email, initials, color)
-    userName.value ='';
+    userName ='';
     email.value ='';
     password.value ='';
     await pushAndAddUsers(newUser, newUserContact);
@@ -109,7 +106,7 @@ async function pushUser(userName, email, password, initials) {
  * That function adds the input values to the 'newUser' object-keys.
  */
 function addingValuesToUser(userName, email, password, initials, color) {
-    newUser['name'] = userName.value;
+    newUser['name'] = userName;
     newUser['abbreviation'] = initials;
     newUser['email'] = email.value;
     newUser['password'] = password.value;
@@ -120,7 +117,7 @@ function addingValuesToUser(userName, email, password, initials, color) {
  * That function adds the input values to the 'newUserContact' object-keys.
  */
 function addingValuesToUsersContact(userName, email, initials, color) {
-    newUserContact['name'] = userName.value;
+    newUserContact['name'] = userName;
     newUserContact['abbreviation'] = initials;
     newUserContact['email'] = email.value;
     newUserContact['color'] = color;

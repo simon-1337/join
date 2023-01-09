@@ -45,6 +45,7 @@ function logout() {
     localStorage.removeItem('currentUserHeaderData');
     localStorage.removeItem('guestUser');
     isLoggedInn();
+    console.clear();
 }
 
 /** 

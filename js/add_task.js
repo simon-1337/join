@@ -3,7 +3,7 @@ let contactIconArray = []; //safes the indexes/positions of the seleceted Contac
 let usersContactIconArray = [];
 let guestInIconArray = false;
 
-setURL('https://gruppe-348.developerakademie.net/smallest_backend_ever');
+
 
 
 /**
