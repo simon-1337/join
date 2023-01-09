@@ -1,7 +1,6 @@
 Global
 
 Members
-
 alphabet
 That variable is important to get an alphabetic order in the contacts list. Familiar functions: filterContacts(list)
 Source:
@@ -51,14 +50,14 @@ Methods
 URLequalsAddTaskHtml()
 That function checks if the current site is equal to the add_taks.html url. If yes, it returns true.
 Source:
-script.js, line 315
+script.js, line 316
 
 Returns:
 a boolean
 (async) addBoard()
 That function adds the boardColumns array to the server database and overwrites previous saved data on the server.
 Source:
-script.js, line 244
+script.js, line 245
 
 addClasslist(id, classe)
 That function is a smaller helpfull function to add a class name to an element.
@@ -67,17 +66,17 @@ Name	Type	Description
 id	string	id is the id of an element to which we want add a class to
 classe	string	classe is a class name, that we want to add to the element
 Source:
-script.js, line 264
+script.js, line 265
 
 (async) addContact()
 That function adds the contacts array to the server database and overwrites previous saved data on the server.
 Source:
-script.js, line 237
+script.js, line 238
 
 (async) deleteServerData()
 That function helps us do delete all server-data, if we want to test for functionality.
 Source:
-script.js, line 150
+script.js, line 151
 
 doNotClose(event)
 That function is needed in most popups, that have a close event onlick on the background. That function prevents the popup to close, if we click right on the popup.
@@ -85,12 +84,12 @@ Parameters:
 Name	Type	Description
 event	event	
 Source:
-script.js, line 282
+script.js, line 283
 
 getIndexOfCurrentUser()
 That function gets the index of the current logged-in user by looping through usersContact and comparing the (in localstorage) stored email address.
 Source:
-script.js, line 328
+script.js, line 329
 
 getNameLetters(name)
 That function gets the abbreviation of a given name (shortletter).
@@ -98,14 +97,14 @@ Parameters:
 Name	Type	Description
 name	string	name is a user/contact name
 Source:
-script.js, line 291
+script.js, line 292
 
 Returns:
 an abbreviation, to letter from the name in uppercase.
 getRandomNumberFromZeroToNine()
 Returns a random integer from 0 to 9: Math.random returns a number lower than 1 Math.floor makes the decimal number to a 'no decimal' number 10 is the number of values we want, beginning from 0 Using this function to get a random color out of the array 'colors'
 Source:
-script.js, line 306
+script.js, line 307
 
 initAddtask(value)
 That function is the site related init function with site related navbar-marking and content.
@@ -113,7 +112,7 @@ Parameters:
 Name	Type	Description
 value	string	value is the a site related number for marking the right navbar element, when entering that site.
 Source:
-script.js, line 204
+script.js, line 205
 
 initBoard(value)
 That function is the site related init function with site related navbar-marking and content.
@@ -121,7 +120,7 @@ Parameters:
 Name	Type	Description
 value	string	value is the a site related number for marking the right navbar element, when entering that site.
 Source:
-script.js, line 194
+script.js, line 195
 
 initContacts(value)
 That function is the site related init function with site related navbar-marking and content.
@@ -129,7 +128,7 @@ Parameters:
 Name	Type	Description
 value	string	value is the a site related number for marking the right navbar element, when entering that site.
 Source:
-script.js, line 214
+script.js, line 215
 
 initSummary(value)
 That function is the site related init function with site related navbar-marking and content.
@@ -137,12 +136,12 @@ Parameters:
 Name	Type	Description
 value	number	value is the a site related number for marking the right navbar element, when entering that site.
 Source:
-script.js, line 182
+script.js, line 183
 
 isLoggedInn()
 That function checks, if there are any login (signed-in user or guest) related data. If not, the user will be put back to the login site (index.html).
 Source:
-script.js, line 225
+script.js, line 226
 
 (async) loadJSONFromServer()
 Loads a JSON or JSON Array to the Server payload {JSON | Array} - The payload you want to store
@@ -164,12 +163,12 @@ Name	Type	Description
 id	string	id is the id of an element from which we want remove a class from
 classe	string	classe is a class name, that we want to remove from the element
 Source:
-script.js, line 273
+script.js, line 274
 
 renderNavAndHeader()
 This function renders the navbar and the header. Almost on every site.
 Source:
-script.js, line 173
+script.js, line 174
 
 renderResponsiveHeaderTitle()
 That function add a title-template into the content-container (in responsive view)
@@ -179,7 +178,7 @@ script.js, line 126
 renderSiteRelatedTemplate()
 That function renders the site (url) related templates.
 Source:
-script.js, line 161
+script.js, line 162
 
 saveJSONToServer()
 Saves a JSON or JSON Array to the Server
@@ -190,3 +189,7 @@ unmarkAllNAvItems()
 That function unmarks all categories/tabs in the navbar.
 Source:
 script.js, line 117
+
+
+
+Documentation generated by JSDoc 4.0.0 on Sun Jan 08 2023 20:04:48 GMT+01

@@ -8,6 +8,28 @@ localStorage.removeItem('guestUser');
 let users;
 let usersContact;
 let user;
+let usersEmail;
+
+let newUser = {
+    'name': '',
+    'valid'   : false,
+    'loggedIn': false,
+    'abbreviation':'',
+    'email'   : '',
+    'password': '',
+    'phone'   :'',
+    'color'   : ``
+}
+
+let newUserContact = {
+    'name': '',
+    'valid'   : false,
+    'loggedIn': false,
+    'abbreviation': '',
+    'email'   : '',
+    'phone'   : '',
+    'color'   : ''
+}
 
 async function inits() {
     await downloadFromServer();
@@ -15,39 +37,40 @@ async function inits() {
     usersContact =  await JSON.parse(backend.getItem('usersContact')) || [];
 }
 
-
-/**
- * This function loads users data from the server
- * 
- * */ /*async function init() { 
-       
-        await downloadFromServer();
-        users = JSON.parse(backend.getItem('users')) || [];
-        user = JSON.parse(backend.getItem('currentUser'));
-    }*/
-
-
 /**
  * This function manages following:
  * - Checking if array is empty or not for various actions
  * 
- *  */ async function addUser() {
+ *  */ 
+async function addUser() {
     let userName = document.getElementById('username');
     let email = document.getElementById('email');
-    console.log('Email is,', email);
     let password = document.getElementById('password');
+    let initials = getNameLetters(userName);
+    userName = checkAndGetName(userName);
+    if(users.length == 0) await pushUser(userName, email, password, initials);
+    else await checkMail(userName, email, password, initials);
+}
 
-    let name= userName.value.split(' ');
+/**
+ * That function renders a to digit shortletter, that are seen in the board ticket or when signed in, in the header top right corner.
+ * @returns 
+ */
+function getNameLetters(userName) {
+    let name = userName.value.split(' ');
     let firstLetter = name.toString().charAt(0).toUpperCase();
-    let secondLetter = name[1].toString().charAt(0).toUpperCase();
-    let initials = firstLetter + secondLetter;
-
-        if(users.length == 0) {
-            pushUser(userName, email, password, initials);
-        } else {
-            checkMail(userName, email, password, initials);
-    
+    if(name.length == 1) return firstLetter + firstLetter;
+    else {
+        let secondLetter = name[1].toString().charAt(0).toUpperCase();
+        return firstLetter + secondLetter;
     }
+}
+
+/** That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. */
+function checkAndGetName(userName) {
+    let name = userName.value.split(' ');
+    if(name.length == 1) return `${name} ${name[0].charAt(0)}`;
+    else return name;
 }
 
 
@@ -56,19 +79,11 @@ async function inits() {
  * - Checking typed email if user was already registered
  * - If email is unused checkmail() will redirect users typed information to pushuser()
  * 
- */function checkMail(userName, email, password, initials) {
-if (users.find(o => o.email == email.value)) {
-alert('Diese E-Mail ist bereits registriert!');
-} else {
-   /* let fullName = userName.split(' ');
-    let initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
-    return initials.toUpperCase();*/
-
-pushUser(userName, email, password, initials);
+ */
+async function checkMail(userName, email, password, initials) {
+    if (users.find(o => o.email == email.value)) alert('Diese E-Mail ist bereits registriert!');
+    else await pushUser(userName, email, password, initials);
 }
-}
-
-
 
 
 /**
@@ -78,48 +93,57 @@ pushUser(userName, email, password, initials);
  * - Saving the new data in the backend
  * - Redirecting to the login site
  * 
- */async function pushUser(userName, email, password, initials) {
-
+ */
+async function pushUser(userName, email, password, initials) {
     let color = giveColor();
-
-
-    let newUser = {
-        'name':userName.value,
-        'valid'   : false,
-        'loggedIn': false,
-        'abbreviation':initials,
-        'email'   :email.value,
-        'password':password.value,
-        'phone'   :'',
-        'color'   : color
-    }
-
-
-    let newUserContact = {
-        'name':userName.value,
-        'valid'   : false,
-        'loggedIn': false,
-        'abbreviation':initials,
-        'email'   :email.value,
-        'phone'   :'',
-        'color'   : color
-    }
-
+    addingValuesToUser(userName, email, password, initials , color)
+    addingValuesToUsersContact(userName, email, initials, color)
     userName.value ='';
     email.value ='';
     password.value ='';
-    
-    users.push(newUser);
-    usersContact.push(newUserContact);
+    await pushAndAddUsers(newUser, newUserContact);
+    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
+}
 
+/**
+ * That function adds the input values to the 'newUser' object-keys.
+ */
+function addingValuesToUser(userName, email, password, initials, color) {
+    newUser['name'] = userName.value;
+    newUser['abbreviation'] = initials;
+    newUser['email'] = email.value;
+    newUser['password'] = password.value;
+    newUser['color'] = color;
+}
+
+/**
+ * That function adds the input values to the 'newUserContact' object-keys.
+ */
+function addingValuesToUsersContact(userName, email, initials, color) {
+    newUserContact['name'] = userName.value;
+    newUserContact['abbreviation'] = initials;
+    newUserContact['email'] = email.value;
+    newUserContact['color'] = color;
+}
+
+/**
+ * That function pushes the new signed user to an array before adding that array to the backend database.
+ * @param {array} object1 - users array with password info
+ * @param {array} object2 - userContact array (like users) but without password stored
+ */
+async function pushAndAddUsers(object1, object2) {
+    users.push(object1);
+    usersContact.push(object2);
     let allUsersAsString = JSON.stringify(users);
     await backend.setItem('users', allUsersAsString);
     let allUsersContactAsString = JSON.stringify(usersContact);
     await backend.setItem('usersContact', allUsersContactAsString);
-
-    window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
 }
 
+/**
+ * That function renders a random colorcode using the math.floor(math.random()*10) method.
+ * @returns a color code in hexadecimal
+ */
 function giveColor() {
     let randomNumber1 = Math.floor(Math.random() * 10);
     let randomNumber2 = Math.floor(Math.random() * 10);
@@ -130,13 +154,10 @@ function giveColor() {
     return color =  '#' + randomNumber1 + randomNumber2 + randomNumber3 + randomNumber4 + randomNumber5 + randomNumber6;
 }
 
-function isLoggedIn() {
-
-    let itemSet = localStorage.getItem('usersEmail');
-    if(!itemSet) {
-        window.location.href = 'index.html?msg=Du hast dich erfolgreich angemeldet';
-    }
-    }
+// function isLoggedIn() {
+//     let itemSet = localStorage.getItem('usersEmail');
+//     if(!itemSet) window.location.href = 'index.html?msg=Du hast dich erfolgreich angemeldet';
+// }
 
 /**
  * This function manages following:
@@ -144,33 +165,20 @@ function isLoggedIn() {
  * - Redirecting user to the join main page
  * - If email and password are not matching, an error message will show up under the input field
  * 
- * */function login() {
-  
-
+ * */
+function login() {
     let usersEmail = document.getElementById('email');
     let password = document.getElementById('password');
-
     user = users.find(u => u.email == usersEmail.value && u.password == password.value);
-    console.log(user);
     if(user) {
-        console.log('user gefunden');
-
         localStorage.setItem('usersEmail', usersEmail.value);
         setCurrentUserHeaderData(user);
-        console.log('user saved in key');
-       
         window.location.href = 'summary.html?msg=Du hast dich erfolgreich angemeldet';
-
-    
-
     } else {
         document.getElementById('indexError').classList.remove('d-none');
         document.getElementById('password').classList.add('border-color');
     }
 }
-
-
-let usersEmail;
 
 /**
  * This function manages following:
@@ -178,29 +186,19 @@ let usersEmail;
  * - Redirecting user to reset_password.html to reset his password
  * - If email doesn't exist, an error message will show up under the input field
  * */
- function giveID() {
-
+function giveID() {
     usersEmail = document.getElementById('forgotEmail').value;
-
-    
-        if (users.find(o => o.email == usersEmail)) {
-
-                localStorage.setItem('usersEmail', usersEmail);
-            
-                document.getElementById('forgotPopup').classList.add("flex");
-                
-                setTimeout(function() {
-                  
-                    window.location.href = 'reset_password.html?msg=Du hast dich erfolgreich angemeldet';
-                   
-                  }, 1500);
-         } else { 
-            document.getElementById('forgotError').classList.remove('d-none');
-            document.getElementById('forgotEmail').classList.add('border-color');
-           }
- }
-
-
+    if (users.find(o => o.email == usersEmail)) {
+        localStorage.setItem('usersEmail', usersEmail); 
+        document.getElementById('forgotPopup').classList.add("flex");
+        setTimeout(function() {
+            window.location.href = 'reset_password.html?msg=Du hast dich erfolgreich angemeldet';
+        }, 1500);
+    } else { 
+        document.getElementById('forgotError').classList.remove('d-none');
+        document.getElementById('forgotEmail').classList.add('border-color');
+    }
+}
 
 
 async function onSubmit(event) {
@@ -214,13 +212,13 @@ async function onSubmit(event) {
     alert('Email not send!');
 }
 
+
 function action(formData) {
     const input = 'https://gruppe-348.developerakademie.net/join/send_mail.php';
     const requestInit = {
         method: 'post',
         body: formData
     };
-
     return fetch(
         input,
         requestInit
@@ -236,13 +234,13 @@ function sendData() {
  * This function manages following:
  * - Loads the typed email saved from the give() function for the verification process in newPassword()
  *
- * */function load() {
-
+ * */
+function load() {
     usersEmail = localStorage.getItem('usersEmail');
 }
 
-    let userArray;
-    let changedPassword;
+let userArray;
+let changedPassword;
 
 
 
@@ -255,35 +253,27 @@ function sendData() {
  * - Redirecting user to the login page
  * - If the passwords are not matching, an error message will show up under the input field
  * 
- * */async function newPassword() {
-
+ * */
+async function newPassword() {
     let newPassword = document.getElementById('newPassword').value;
     let confirmPassword = document.getElementById('confirmPassword').value;
 
-        for (let u = 0; u < users.length; u++) {
-             userArray = users[u];
+    for (let u = 0; u < users.length; u++) {
+        userArray = users[u];
+        if(newPassword == confirmPassword) {
+            console.log('Email identified and password matched');
+            changedPassword  = confirmPassword;
+            console.log('The new password is,', changedPassword);
+            if (users[u].email == usersEmail) {
+                users[u].password = changedPassword;
+                let allUsersAsString = JSON.stringify(users);
+                await backend.setItem('users', allUsersAsString);
 
-    if(newPassword == confirmPassword) {
-        console.log('Email identified and password matched');
-        changedPassword  = confirmPassword;
-        console.log('The new password is,', changedPassword);
-
-
-       if (users[u].email == usersEmail) {
-        users[u].password = changedPassword;
-
-        let allUsersAsString = JSON.stringify(users);
-        await backend.setItem('users', allUsersAsString);
-
-        document.getElementById('resetPopup').classList.add("flex");
-
-        setTimeout(function() {
-            window.location.href = 'reset_password.html?msg=Du hast dich erfolgreich angemeldet';
-           
-          }, 1500);
-
-}
-           
+                document.getElementById('resetPopup').classList.add("flex");
+                setTimeout(function() {
+                window.location.href = 'reset_password.html?msg=Du hast dich erfolgreich angemeldet';
+                }, 1500);
+            }
         }
     }
 
@@ -298,12 +288,13 @@ function sendData() {
  * This function manages following:
  * - Prevents the form from refreshing the page
  * 
- * */function preventRefresh() {
-       newPassword();
-       return false;
-    }
+ * */
+function preventRefresh() {
+    newPassword();
+    return false;
+}
 
-    function preventRefreshForgot() {
-        preventDefault();
-        return false;
-    }
+function preventRefreshForgot() {
+    preventDefault();
+    return false;
+}

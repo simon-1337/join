@@ -142,6 +142,7 @@ async function init() {
     isLoggedInn();
     getIndexOfCurrentUser();
     renderSiteRelatedTemplate();
+    console.clear();
 }
 
 /**
