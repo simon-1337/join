@@ -8,6 +8,7 @@ let users;
 let usersContact;
 let user;
 let usersEmail;
+let emailURL;
 
 let newUser = {
     'name': '',
@@ -28,6 +29,7 @@ let newUserContact = {
 
 async function inits() {
     await downloadFromServer();
+    getEmailFromURL();
     users =  await JSON.parse(backend.getItem('users')) || [];
     usersContact =  await JSON.parse(backend.getItem('usersContact')) || [];
     console.clear();
@@ -58,8 +60,18 @@ function checkAndGetName(userName) {
         name[1] = name[1].slice(0, 1).toUpperCase() + name[1].slice(1);
         return name[0] + ' ' + name[1];
     }
-
 }
+
+
+/**
+ * This function saves the email sent in the URL in the emailURL variable
+ */
+function getEmailFromURL() {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    emailURL = urlParams.get('email');
+}
+
 
 /**
  * That function renders a to digit shortletter, that are seen in the board ticket or when signed in, in the header top right corner.
@@ -151,10 +163,6 @@ function giveColor() {
     return color =  '#' + randomNumber1 + randomNumber2 + randomNumber3 + randomNumber4 + randomNumber5 + randomNumber6;
 }
 
-// function isLoggedIn() {
-//     let itemSet = localStorage.getItem('usersEmail');
-//     if(!itemSet) window.location.href = 'index.html?msg=Du hast dich erfolgreich angemeldet';
-// }
 
 /**
  * This function manages following:
@@ -170,7 +178,7 @@ function login() {
     if(user) {
         localStorage.setItem('usersEmail', usersEmail.value);
         setCurrentUserHeaderData(user);
-        window.location.href = 'summary.html?msg=Du hast dich erfolgreich angemeldet';
+        window.location.href = 'summary.html?msg=Login was successful';
     } else {
         document.getElementById('indexError').classList.remove('d-none');
         document.getElementById('password').classList.add('border-color');
@@ -184,13 +192,12 @@ function login() {
  * - If email doesn't exist, an error message will show up under the input field
  * */
 function giveID() {
-    usersEmail = document.getElementById('forgotEmail').value;
+  usersEmail = document.getElementById('forgotEmail').value;
     if (users.find(o => o.email == usersEmail)) {
-        localStorage.setItem('usersEmail', usersEmail); 
-        document.getElementById('forgotPopup').classList.add("flex");
+        document.getElementById('forgotPopup').classList.remove("d-none");
         setTimeout(function() {
-            window.location.href = 'reset_password.html?msg=Du hast dich erfolgreich angemeldet';
-        }, 1500);
+            window.location.href = 'forgot_password.html?msg= Email sent successfully!';
+        }, 700);
     } else { 
         document.getElementById('forgotError').classList.remove('d-none');
         document.getElementById('forgotEmail').classList.add('border-color');
@@ -204,14 +211,14 @@ async function onSubmit(event) {
     let formData = new FormData(event.target);
     let response = await action(formData);
     if(response.ok) 
-    console.log('email was send!');
+    console.log('Email was sent!');
     else
-    alert('Email not send!');
+    alert('Email not sent!');
 }
 
 
 function action(formData) {
-    const input = 'https://gruppe-348.developerakademie.net/join/send_mail.php';
+    const input = 'https://simon-besenbaeck.developerakademie.net/join/send_mail.php';
     const requestInit = {
         method: 'post',
         body: formData
@@ -220,10 +227,6 @@ function action(formData) {
         input,
         requestInit
         );
-}
-
-function sendData() {
-    
 }
 
 
@@ -258,25 +261,24 @@ async function newPassword() {
     for (let u = 0; u < users.length; u++) {
         userArray = users[u];
         if(newPassword == confirmPassword) {
-            console.log('Email identified and password matched');
             changedPassword  = confirmPassword;
-            console.log('The new password is,', changedPassword);
-            if (users[u].email == usersEmail) {
+            if (users[u].email == emailURL) {
                 users[u].password = changedPassword;
                 let allUsersAsString = JSON.stringify(users);
                 await backend.setItem('users', allUsersAsString);
 
-                document.getElementById('resetPopup').classList.add("flex");
+                document.getElementById('resetPopup').classList.remove("d-none");
                 setTimeout(function() {
-                window.location.href = 'reset_password.html?msg=Du hast dich erfolgreich angemeldet';
-                }, 1500);
+                    window.location.href = 'index.html?msg=Password reset was successful!';
+                }, 700);
             }
         }
     }
 
-    if(newPassword !== confirmPassword && users.find(o => o.email !== usersEmail)) {
+    if(newPassword !== confirmPassword || users.find(o => o.email !== emailURL)) {
         document.getElementById('resetError').classList.remove('d-none');
         document.getElementById('confirmPassword').classList.add('border-color');
+        document.getElementById('signButton').classList.add('btn-smaller-margin');
     }
 }
 
