@@ -51,7 +51,9 @@ async function addUser() {
     console.clear();
 }
 
-/** That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. */
+/** 
+ * That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. 
+ */
 function checkAndGetName(userName) {
     let name = userName.value.split(' ');
     name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1);
@@ -75,7 +77,8 @@ function getEmailFromURL() {
 
 /**
  * That function renders a to digit shortletter, that are seen in the board ticket or when signed in, in the header top right corner.
- * @returns 
+ * 
+ * @returns the firstletter and the secondletter in a String 
  */
 function getNameLetters(userName) {
     let name = userName.split(' ');
@@ -88,7 +91,6 @@ function getNameLetters(userName) {
  * This function manages following:
  * - Checking typed email if user was already registered
  * - If email is unused checkmail() will redirect users typed information to pushuser()
- * 
  */
 async function checkMail(userName, email, password, initials) {
     if (users.find(o => o.email == email.value)) alert('Diese E-Mail ist bereits registriert!');
@@ -101,7 +103,6 @@ async function checkMail(userName, email, password, initials) {
  * - Clearing the inputfield after submitting the formular  
  * - Saving the new data in the backend
  * - Redirecting to the login site
- * 
  */
 async function pushUser(userName, email, password, initials) {
     let color = giveColor();
@@ -151,6 +152,7 @@ async function pushAndAddUsers(object1, object2) {
 
 /**
  * That function renders a random colorcode using the math.floor(math.random()*10) method.
+ * 
  * @returns a color code in hexadecimal
  */
 function giveColor() {
@@ -169,8 +171,7 @@ function giveColor() {
  * - Checking if email and password are matching for a successfull login
  * - Redirecting user to the join main page
  * - If email and password are not matching, an error message will show up under the input field
- * 
- * */
+ */
 function login() {
     let usersEmail = document.getElementById('email');
     let password = document.getElementById('password');
@@ -190,7 +191,7 @@ function login() {
  * - Saves the email typed from the forgot_password.html for further verification in reset_Password.html
  * - Redirecting user to reset_password.html to reset his password
  * - If email doesn't exist, an error message will show up under the input field
- * */
+ */
 function giveID() {
   usersEmail = document.getElementById('forgotEmail').value;
     if (users.find(o => o.email == usersEmail)) {
@@ -233,8 +234,7 @@ function action(formData) {
 /**
  * This function manages following:
  * - Loads the typed email saved from the give() function for the verification process in newPassword()
- *
- * */
+ */
 function load() {
     usersEmail = localStorage.getItem('usersEmail');
 }
@@ -252,8 +252,7 @@ let changedPassword;
  * - Saving the new password in the backend
  * - Redirecting user to the login page
  * - If the passwords are not matching, an error message will show up under the input field
- * 
- * */
+ */
 async function newPassword() {
     let newPassword = document.getElementById('newPassword').value;
     let confirmPassword = document.getElementById('confirmPassword').value;
@@ -286,8 +285,7 @@ async function newPassword() {
 /**
  * This function manages following:
  * - Prevents the form from refreshing the page
- * 
- * */
+ */
 function preventRefresh() {
     newPassword();
     return false;
