@@ -1,7 +1,9 @@
 // #### SUMMARY ####
 let months = ['January','February','March','April','May','Jun','Jul','August','September','October','November','December', 'Nothing here'];
 
-
+/**
+ * This function is used to greet the user by his name and also with the correct phrase according to the current time
+ */
 function greet() {
     
     let today = new Date();
@@ -28,13 +30,15 @@ function greet() {
 }
 
 /** That function gehts the current user name, if a user is logged in with a password.
- * Its is necessary for greeting the user on the summary.html page. */
+ * Its is necessary for greeting the user on the summary.html page. 
+ */
 function getUserName() {
     return usersContact[indexOfCurrentUser]['name'];
 }
 
 /**
- * This function renders informations about the number of tasks in the categories */
+ * This function renders informations about the number of tasks in the categories 
+ */
 function renderSummary() {
     document.getElementById('task-count1').innerHTML = `${getNumberOfAllTasks()}`;
     document.getElementById('task-count2').innerHTML = `${boardColumns[1].length}`;
@@ -48,7 +52,9 @@ filterPriorities();
 
 }
 
-/** This function returns the number of all tasks in board */
+/** 
+ * This function returns the number of all tasks in board 
+ */
 function getNumberOfAllTasks() {
     let tasks = 0;
     for (let i = 0; i < boardColumns.length; i++) tasks += (boardColumns[i].length);
@@ -61,7 +67,9 @@ let mid = 0;
 let low = 0;
 let upcomingDeadline = 0;
 
-/** That function checks if a priority is existing and filters the right date after that. */
+/** 
+ * That function checks if a priority is existing and filters the right date after that. 
+ */
 function filterPriorities() {
     if(filterPrios('Urgent')) filterDate('Urgent');
     else if(filterPrios('Medium') > filterPrios('Low')) filterDate('Medium');
@@ -69,8 +77,11 @@ function filterPriorities() {
     renderPriorityContainer(upcomingDeadline);
 }
 
-/** That function checks the available priorities of all tickets. 
- * @param {string} prios - prios is a string of the priority name */
+/** 
+ * That function checks the available priorities of all tickets. 
+ * 
+ * @param {string} prios - prios is a string of the priority name 
+ */
 function filterPrios(prio) {
     for (let i = 0; i < boardColumns.length; i++) filterLoopPrios(prio, i);
     if(prio == 'Urgent') return urgent;
@@ -78,9 +89,12 @@ function filterPrios(prio) {
     else if(prio == 'Low') return low;
 }
 
-/** That function checks in a loop for the given prio (priority). 
+/** 
+ * That function checks in a loop for the given prio (priority). 
+ * 
  * @param {string} prios - prios is a string of the priority name 
- *  @param {number} i - i is the index of the board column in boardColumns */
+ * @param {number} i - i is the index of the board column in boardColumns 
+ */
 function filterLoopPrios(prio, i) {
     if(boardColumns[i].length > 0) {
         for (let j = 0; j < boardColumns[i].length; j++) {
@@ -93,8 +107,11 @@ function filterLoopPrios(prio, i) {
     }
 }
 
-/** That function filters the available dates of all, depending of the prio, tickets. 
- * @param {string} prios - prios is a string of the priority name */
+/** 
+ * That function filters the available dates of all, depending of the prio, tickets. 
+ * 
+ * @param {string} prios - prios is a string of the priority name 
+ */
 function filterDate(prio) {
     let dates = [];
     for (let i = 0; i < boardColumns.length; i++) 
@@ -106,16 +123,22 @@ function filterDate(prio) {
     else upcomingDeadline = [[''],['13'],['']];
 }
 
-/** That function returns the next upcoming date.
- * @param {array} dates - dates is a array of due-dates (string) */
+/** 
+ * That function returns the next upcoming date.
+ * 
+ * @param {array} dates - dates is a array of due-dates (string) 
+ */
 function getUpcomingDate(dates) {
     let splittedDates = [];
     for (let i = 0; i < dates.length; i++) splittedDates.push(dates[i].split('-'));
     return orderDates(splittedDates);
 }
 
-/** That function gets splitted dates and compares the date years.
- * @param {array} dates - dates is a array of due-dates (string) */
+/** 
+ * That function gets splitted dates and compares the date years.
+ * 
+ * @param {array} dates - dates is a array of due-dates (string) 
+ */
 function orderDates(dates) {
     let currentDate = dates[0];
     for (let i = 1; i < dates.length; i++) {
@@ -125,26 +148,33 @@ function orderDates(dates) {
     return currentDate;
 }
 
-/** That function gets splitted dates and compares the date months.
-* @param {array} dates - dates is a array of due-dates (string) 
-* @param {number} i - i is the index of a date element in the date string 
-* @param {string} currentDate - currentDate is the current next upcoming date, which is compared to another date in the date array. */
+/** 
+ * That function gets splitted dates and compares the date months.
+ * 
+ * @param {array} dates - dates is a array of due-dates (string) 
+ * @param {number} i - i is the index of a date element in the date string 
+ * @param {string} currentDate - currentDate is the current next upcoming date, which is compared to another date in the date array. 
+ */
 function checkMonth(i, dates, currentDate) {
     if(currentDate[1] > dates[i][1]) currentDate = dates[i];
     else if(currentDate[1] == dates[i][1]) currentDate = checkDay(i, dates, currentDate);
     return currentDate;
 }
 
-/** That function gets splitted dates and compares the date days.
-* @param {array} dates - dates is a array of due-dates (string) 
-* @param {number} i - i is the index of a date element in the date string 
-* @param {string} currentDate - currentDate is the current next upcoming date, which is compared to another date in the date array. */
+/** 
+ * That function gets splitted dates and compares the date days.
+ * @param {array} dates - dates is a array of due-dates (string) 
+ * @param {number} i - i is the index of a date element in the date string 
+ * @param {string} currentDate - currentDate is the current next upcoming date, which is compared to another date in the date array. 
+ */
 function checkDay(i, dates, currentDate) {
     if(currentDate[2] > dates[i][2]) currentDate = dates[i];
     return currentDate;
 }
 
-/** That function renders the priority, that will be displayed in summary.html in the middle section. */
+/** 
+ * That function renders the priority, that will be displayed in summary.html in the middle section. 
+ */
 function renderPriorityContainer(j) {
     if(urgent >= 1) {
         document.getElementById('priority-Icon').src = 'assets/img/red.png';
