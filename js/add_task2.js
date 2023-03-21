@@ -338,7 +338,7 @@ function pushTaskToTodo() {
 function switchToBoard() {
     if (URLequalsAddTaskHtml()) {
         setTimeout(function (){
-            window.location.href = '/board.html';     
+            window.location.href = 'board.html';     
           }, 700);
     }
 }
