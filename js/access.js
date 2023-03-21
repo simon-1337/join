@@ -41,6 +41,7 @@ async function inits() {
 
 
 
+
 ////    FUNCTIONALITY TO SIGN UP A USER    ////
 
 
@@ -109,9 +110,9 @@ async function pushUser(userName, email, password, initials) {
     let color = giveColor();
     addingValuesToUser(userName, email, password, initials , color)
     addingValuesToUsersContact(userName, email, initials, color)
-    userName ='';
-    email.value ='';
-    password.value ='';
+    document.getElementById('username').value = '';
+    email.value = '';
+    password.value = '';
     await pushAndAddUsers(newUser, newUserContact);
     window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
 }

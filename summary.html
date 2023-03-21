@@ -51,12 +51,12 @@
                         <div class="pool-info-container w-100 h-100 flex">
                             <div class="pool-infos flex column">
                                 <div class="task-info-container w-100 flex">
-                                    <div onclick="isLoggedInn()" class="task_info_box1 w-100 h-100"><span class="task-info-text"><span id="task-count1" class="task-info-count">0</span> Tasks in Board</span></div>
-                                    <div onclick="isLoggedInn()" class="task_info_box2 w-100 h-100"><span class="task-info-text"><span id="task-count2" class="task-info-count">0</span> Tasks in Progress</span></div>
-                                    <div onclick="isLoggedInn()" class="task_info_box3 w-100 h-100"><span class="task-info-text"><span id="task-count3" class="task-info-count">0</span> Awaiting Feedback</span></div>
+                                    <a href="board.html" onclick="isLoggedInn()" class="task_info_box1 w-100 h-100"><span class="task-info-text"><span id="task-count1" class="task-info-count">0</span> Tasks in Board</span></a>
+                                    <a href="board.html" onclick="isLoggedInn()" class="task_info_box2 w-100 h-100"><span class="task-info-text"><span id="task-count2" class="task-info-count">0</span> Tasks in Progress</span></a>
+                                    <a href="board.html" onclick="isLoggedInn()" class="task_info_box3 w-100 h-100"><span class="task-info-text"><span id="task-count3" class="task-info-count">0</span> Awaiting Feedback</span></a>
                                 </div>
                                 <div class="flex">
-                                    <div class="priority-pool w-100 flex">     
+                                    <a href="board.html" class="priority-pool w-100 flex">     
                                         <div class="priority-container h-100">
                                             <div><div id="priorities-radius" class="priorities-radius"><img id="priority-Icon" class="priority-Icon" src="assets/img/orange.png"></div></div> 
                                             <div class="priority-text-pool"><span id="priority-count" class="priority-count">0</span> <span id="priority-text" class="priority-text">Urgent</span></div>
@@ -66,17 +66,17 @@
                                             <span id="date" class="date">Oktober 16, 2022</span>
                                             <span class="deadline">Upcoming Deadline</span>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="doAndDone flex w-100">
-                                    <div class="toDo flex w-100 h-100">
+                                    <a href="board.html" class="toDo flex w-100 h-100">
                                         <img class="toDoImage" src="assets/img/summary-pencil-icon.png">
                                         <span class="to-do-text"><span id="task-info-count" class="task-info-count">0</span>To-do</span>
-                                    </div>
-                                    <div class="done flex w-100 h-100">
+                                    </a>
+                                    <a href="board.html" class="done flex w-100 h-100">
                                         <img class="doneImage" src="assets/img/summary-check-icon.png">
                                         <span class="to-do-text"><span id="task-info-count2" class="task-info-count">0</span>Done</span>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                             <div class="greet-container w-100">
@@ -91,6 +91,5 @@
             </div>
             </div>
         </div>
-    </div>
 </body>
 </html>

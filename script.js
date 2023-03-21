@@ -101,6 +101,7 @@ let categoryColors = ['#FF8A00', '#8AA4FF', '#FF0000', '#2AD300', '#E200BE', '#0
 // ##### NAV #####
 let selectedNavItem = 0;
 
+
 /**
  * That function marks the category/tab in the navbar on the same page.
  * @param {number} n - The id of the category/tab in the nav
@@ -110,6 +111,7 @@ function markNavItem(n) {
     selectedNavItem = n;
     document.getElementById(`${n}`).classList.add('selected-nav-item');  
 }
+
 
 /**
  * That function unmarks all categories/tabs in the navbar.
@@ -145,6 +147,7 @@ async function init() {
     console.clear();
 }
 
+
 /**
  * That function helps us do delete all server-data, if we want to test for functionality.
  */
@@ -155,6 +158,7 @@ async function deleteServerData() {
     await backend.deleteItem('contacts');
     await backend.deleteItem('users');
 }
+
 
 /**
  * That function renders the site (url) related templates.
@@ -168,6 +172,7 @@ function renderSiteRelatedTemplate() {
     
 }
 
+
 /**
  * This function renders the navbar and the header. Almost on every site.
  */
@@ -175,6 +180,7 @@ function renderNavAndHeader() {
     renderNav();
     renderHeader();
 }
+
 
 /**
  * That function is the site related init function with site related navbar-marking and content.
@@ -188,6 +194,7 @@ function initSummary(value) {
     
 }
 
+
 /**
  * That function is the site related init function with site related navbar-marking and content.
  * @param {string} value - value is the a site related number for marking the right navbar element, when entering that site.
@@ -197,6 +204,7 @@ function initBoard(value) {
     renderPopupsInBoard();
     renderBoard();
 }
+
 
 /**
  * That function is the site related init function with site related navbar-marking and content.
@@ -208,6 +216,7 @@ function initAddtask(value) {
     initAddTask();
 }
 
+
 /**
  * That function is the site related init function with site related navbar-marking and content.
  * @param {string} value - value is the a site related number for marking the right navbar element, when entering that site.
@@ -217,6 +226,7 @@ function initContacts(value) {
     renderPopupsInContacts();
     renderContactsList();
 }
+
 
 // LOGIN 
 /**
@@ -239,21 +249,13 @@ async function addContact() {
     await backend.setItem('contacts', JSON.stringify(contacts));
 }
 
+
 /**
  * That function adds the boardColumns array to the server database and overwrites previous saved data on the server.
  */
 async function addBoard() {
     await backend.setItem('boardColumns', JSON.stringify(boardColumns));
 }
-
-// async function addUser() {
-//     users.push('John);
-//     await backend.setItem('users', JSON.stringify(users));
-// }
-// DELETE
-// function deleteUser(name) {
-//     await backend.deleteItem('users');
-// }
 
 
 // HELPFULL FUNCTIONS
@@ -266,6 +268,7 @@ function addClasslist(id, classe) {
     document.getElementById(id).classList.add(classe);
 }
 
+
 /**
  * That function is a smaller helpfull function to remove a class name from an element.
  * @param {string} id - id is the id of an element from which we want remove a class from 
@@ -275,6 +278,7 @@ function removeClasslist(id, classe) {
     document.getElementById(id).classList.remove(classe);
 }
 
+
 /**
  * That function is needed in most popups, that have a close event onlick on the background. 
  * That function prevents the popup to close, if we click right on the popup.
@@ -283,6 +287,7 @@ function removeClasslist(id, classe) {
 function doNotClose(event) {
     event.stopPropagation();
 }
+
 
 /**
  * That function gets the abbreviation of a given name (shortletter).
@@ -308,6 +313,7 @@ function getRandomNumberFromZeroToNine() {
     return Math.floor(Math.random() * 10);
 }
 
+
 /**
  * That function checks if the current site is equal to the add_taks.html url.
  * If yes, it returns true.
@@ -319,8 +325,10 @@ function URLequalsAddTaskHtml() {
     }
 }
 
+
 //// To get the index of the current user in usersContact
 let indexOfCurrentUser;
+
 
 /**
  * That function gets the index of the current logged-in user by looping through usersContact and 

@@ -51,13 +51,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $message = "Hello,\n
         \nYou got invited to join our Team on Join.
         \nFollow this link to registrate for our application.
-        \nhttps://gruppe-348.developerakademie.net/join\n
+        \nhttps://simon-besenbaeck.developerakademie.net/join\n
         \nSee you soon on our App,\n
         \nYour Join team\n";
 
         $recipient = $email;
         $subject = "Invitation to our Join Team";
-        $headers = "Form: noreply@https://gruppe-348.developerakademie.net";
+        $headers = "Form: noreply@https://simon-besenbaeck.developerakademie.net/join";
 
         $result = mail($recipient, $subject, $message, $headers);
         print($result);
