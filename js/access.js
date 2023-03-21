@@ -243,8 +243,6 @@ let userArray;
 let changedPassword;
 
 
-
-
 /**
  * This function manages following:
  * - Making sure the passwords from reset_password.html got matched together to create the new password
