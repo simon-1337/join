@@ -320,7 +320,7 @@ function getRandomNumberFromZeroToNine() {
  * @returns a boolean
  */
 function URLequalsAddTaskHtml() {
-    if ('/add_task.html' == window.location.pathname) {
+    if ('/add_task.html' == window.location.pathname || '/join/add_task.html' == window.location.pathname) {
         return true;
     }
 }
