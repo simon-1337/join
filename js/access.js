@@ -8,7 +8,7 @@ let users;
 let usersContact;
 let user;
 let usersEmail;
-let emailURL;
+
 
 let newUser = {
     'name': '',
@@ -27,6 +27,10 @@ let newUserContact = {
     'color'   : ''
 }
 
+
+/**
+ * This function is used to initiate the login, sign up forgot passwod and reset password pages
+ */
 async function inits() {
     await downloadFromServer();
     getEmailFromURL();
@@ -35,10 +39,14 @@ async function inits() {
     console.clear();
 }
 
+
+
+////    FUNCTIONALITY TO SIGN UP A USER    ////
+
+
 /**
  * This function manages following:
  * - Checking if array is empty or not for various actions
- * 
  */ 
 async function addUser() {
     let userName = document.getElementById('username');
@@ -50,6 +58,7 @@ async function addUser() {
     else await checkMail(userName, email, password, initials);
     console.clear();
 }
+
 
 /** 
  * That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. 
@@ -66,16 +75,6 @@ function checkAndGetName(userName) {
 
 
 /**
- * This function saves the email sent in the URL in the emailURL variable
- */
-function getEmailFromURL() {
-    let queryString = window.location.search;
-    let urlParams = new URLSearchParams(queryString);
-    emailURL = urlParams.get('email');
-}
-
-
-/**
  * That function renders a to digit shortletter, that are seen in the board ticket or when signed in, in the header top right corner.
  * 
  * @returns the firstletter and the secondletter in a String 
@@ -87,6 +86,7 @@ function getNameLetters(userName) {
     return firstLetter + secondLetter;
 }
 
+
 /**
  * This function manages following:
  * - Checking typed email if user was already registered
@@ -96,6 +96,7 @@ async function checkMail(userName, email, password, initials) {
     if (users.find(o => o.email == email.value)) alert('Diese E-Mail ist bereits registriert!');
     else await pushUser(userName, email, password, initials);
 }
+
 
 /**
  * This function manages following:
@@ -115,6 +116,7 @@ async function pushUser(userName, email, password, initials) {
     window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
 }
 
+
 /**
  * That function adds the input values to the 'newUser' object-keys.
  */
@@ -126,6 +128,7 @@ function addingValuesToUser(userName, email, password, initials, color) {
     newUser['color'] = color;
 }
 
+
 /**
  * That function adds the input values to the 'newUserContact' object-keys.
  */
@@ -135,6 +138,7 @@ function addingValuesToUsersContact(userName, email, initials, color) {
     newUserContact['email'] = email.value;
     newUserContact['color'] = color;
 }
+
 
 /**
  * That function pushes the new signed user to an array before adding that array to the backend database.
@@ -150,6 +154,7 @@ async function pushAndAddUsers(object1, object2) {
     await backend.setItem('usersContact', allUsersContactAsString);
 }
 
+
 /**
  * That function renders a random colorcode using the math.floor(math.random()*10) method.
  * 
@@ -164,6 +169,10 @@ function giveColor() {
     let randomNumber6 = Math.floor(Math.random() * 10);
     return color =  '#' + randomNumber1 + randomNumber2 + randomNumber3 + randomNumber4 + randomNumber5 + randomNumber6;
 }
+
+
+
+////    FUNCTIONALITY TO LOGIN    ////
 
 
 /**
@@ -186,26 +195,150 @@ function login() {
     }
 }
 
+
 /**
  * This function manages following:
- * - Saves the email typed from the forgot_password.html for further verification in reset_Password.html
- * - Redirecting user to reset_password.html to reset his password
- * - If email doesn't exist, an error message will show up under the input field
+ * - Loads the typed email saved from the give() function for the verification process in newPassword()
  */
-function giveID() {
-  usersEmail = document.getElementById('forgotEmail').value;
-    if (users.find(o => o.email == usersEmail)) {
-        document.getElementById('forgotPopup').classList.remove("d-none");
-        setTimeout(function() {
-            window.location.href = 'forgot_password.html?msg= Email sent successfully!';
-        }, 700);
-    } else { 
-        document.getElementById('forgotError').classList.remove('d-none');
-        document.getElementById('forgotEmail').classList.add('border-color');
+function load() {
+    usersEmail = localStorage.getItem('usersEmail');
+}
+
+
+
+
+////    FUNCTIONALITY TO RESET THE PASSWORD    ////
+
+
+let userArray;
+let changedPassword;
+let newSetPassword;
+let confirmNewSetPassword;
+let emailURL;
+
+
+/**
+ * This function saves the email sent in the URL in the emailURL variable
+ */
+function getEmailFromURL() {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    emailURL = urlParams.get('email');
+}
+
+
+/**
+ * This function manages following:
+ * - Making sure the passwords from reset_password.html got matched together to create the new password
+ * - filtering the exact object in the array where the typed email from forgot_password.html is located at to change the password of the user
+ * - Saving the new password in the backend
+ * - Redirecting user to the login page
+ * - If the passwords are not matching, an error message will show up under the input field
+ */
+async function newPassword() {
+    getEnteredPasswordValues();
+    if (checkIfUserInDatabase() && checkIfPasswordsMatch()) {
+        await changeUsersPassword();
     }
 }
 
 
+/**
+ * This function is used to get the values entered by the user as new password
+ */
+function getEnteredPasswordValues() {
+    newSetPassword = document.getElementById('newPassword').value;
+    confirmNewSetPassword = document.getElementById('confirmPassword').value;
+}
+
+
+/**
+ * This function is used to check if the email address where the password should be changed is in the database
+ * 
+ * @returns Boolean value
+ */
+function checkIfUserInDatabase() {
+    if (users.find(o => o.email !== emailURL)) {
+        displayUserNotInDB();
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+/**
+ * This function is used to display the error that the email address is not in the database
+ */
+function displayUserNotInDB() {
+    document.getElementById('resetErrorEmail').classList.remove('d-none');
+    document.getElementById('confirmPassword').classList.add('border-color');
+    document.getElementById('signButton').classList.add('btn-smaller-margin');
+}
+
+
+/**
+ * This function is used if the new entered passwords are matching (RESET PASSWORD)
+ * 
+ * @returns Boolean value
+ */
+function checkIfPasswordsMatch() {
+    if (newSetPassword !== confirmNewSetPassword) {
+        displayPasswordsDoNotMatch();
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+/**
+ * This function is used to display the error that the Passwords do not match
+ */
+function displayPasswordsDoNotMatch() {
+    document.getElementById('resetError').classList.remove('d-none');
+    document.getElementById('confirmPassword').classList.add('border-color');
+    document.getElementById('signButton').classList.add('btn-smaller-margin');
+}
+
+
+/**
+ * This function manages the reset of the password
+ */
+async function changeUsersPassword() {
+    for (let u = 0; u < users.length; u++) {
+        currentUser = users[u];
+        if (currentUser.email == emailURL) {
+            currentUser.password = newSetPassword;
+            let allUsersAsString = JSON.stringify(users);
+            await backend.setItem('users', allUsersAsString);
+            document.getElementById('resetPopup').classList.remove("d-none");
+            redirectToMainPage();
+        }
+    }
+}
+
+
+/**
+ * After reseting the password this function redirects the user to the main page
+ */
+function redirectToMainPage() {
+    setTimeout(function() {
+        window.location.href = 'index.html?msg=Password reset was successful!';
+    }, 700);
+}
+
+
+
+
+////    FUNCTIONALITY TO SEND THE FORGOT PASSWORD EMAIL    ////
+
+
+/**
+ * This function is responsible for managing the actions once the user requests to get a forgot password email
+ * 
+ * @param {SubmitEvent} event - When the form is submitted
+ */
 async function onSubmit(event) {
     event.preventDefault();
     giveID(); 
@@ -218,69 +351,50 @@ async function onSubmit(event) {
 }
 
 
-function action(formData) {
-    const input = 'https://simon-besenbaeck.developerakademie.net/join/send_mail.php';
-    const requestInit = {
-        method: 'post',
-        body: formData
-    };
-    return fetch(
-        input,
-        requestInit
-        );
-}
-
-
 /**
  * This function manages following:
- * - Loads the typed email saved from the give() function for the verification process in newPassword()
+ * - Saves the email typed from the forgot_password.html for further verification in reset_Password.html
+ * - Redirecting user to reset_password.html to reset his password
+ * - If email doesn't exist, an error message will show up under the input field
  */
-function load() {
-    usersEmail = localStorage.getItem('usersEmail');
-}
-
-let userArray;
-let changedPassword;
-
-
-/**
- * This function manages following:
- * - Making sure the passwords from reset_password.html got matched together to create the new password
- * - filtering the exact object in the array where the typed email from forgot_password.html is located at to change the password of the user
- * - Saving the new password in the backend
- * - Redirecting user to the login page
- * - If the passwords are not matching, an error message will show up under the input field
- */
-async function newPassword() {
-    let newPassword = document.getElementById('newPassword').value;
-    let confirmPassword = document.getElementById('confirmPassword').value;
-
-    for (let u = 0; u < users.length; u++) {
-        userArray = users[u];
-        if(newPassword == confirmPassword) {
-            changedPassword  = confirmPassword;
-            if (users[u].email == emailURL) {
-                users[u].password = changedPassword;
-                let allUsersAsString = JSON.stringify(users);
-                await backend.setItem('users', allUsersAsString);
-
-                document.getElementById('resetPopup').classList.remove("d-none");
-                setTimeout(function() {
-                    window.location.href = 'index.html?msg=Password reset was successful!';
-                }, 700);
-            }
-        }
-    }
-
-    if(newPassword !== confirmPassword || users.find(o => o.email !== emailURL)) {
-        document.getElementById('resetError').classList.remove('d-none');
-        document.getElementById('confirmPassword').classList.add('border-color');
-        document.getElementById('signButton').classList.add('btn-smaller-margin');
-    }
-}
+function giveID() {
+    usersEmail = document.getElementById('forgotEmail').value;
+      if (users.find(o => o.email == usersEmail)) {
+          document.getElementById('forgotPopup').classList.remove("d-none");
+          setTimeout(function() {
+              window.location.href = 'forgot_password.html?msg= Email sent successfully!';
+          }, 700);
+      } else { 
+          document.getElementById('forgotError').classList.remove('d-none');
+          document.getElementById('forgotEmail').classList.add('border-color');
+      }
+  }
+  
+  
+  /**
+   * This function is used to send the email
+   * 
+   * @param {FormData} formData 
+   * @returns A fetch including the input and requestInit (method and Formdata)
+   */
+  function action(formData) {
+      const input = 'https://simon-besenbaeck.developerakademie.net/join/send_mail.php';
+      const requestInit = {
+          method: 'post',
+          body: formData
+      };
+      return fetch(
+          input,
+          requestInit
+          );
+  }
+  
 
 
-/**
+
+
+
+  /**
  * This function manages following:
  * - Prevents the form from refreshing the page
  */
@@ -289,6 +403,11 @@ function preventRefresh() {
     return false;
 }
 
+
+/**
+ * This function manages following:
+ * - Prevents the form from refreshing the page
+ */
 function preventRefreshForgot() {
     preventDefault();
     return false;
