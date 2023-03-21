@@ -3,6 +3,7 @@ let months = ['January','February','March','April','May','Jun','Jul','August','S
 let today;
 let hour;
 
+
 /**
  * This function is used to greet the user by his name and also with the correct phrase according to the current time
  */
@@ -66,6 +67,7 @@ function resolveGreetingTime() {
     }
 }
 
+
 /**
  * This function is used question if the current time is in the morning
  * 
@@ -94,6 +96,7 @@ function timeIsDay() {
 function timeIsEvening() {
     return hour >= 18
 }
+
 
 /**
  * This function is used to insert the greeting text (e.g. Good morning,) in the HTML
