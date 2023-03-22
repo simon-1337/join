@@ -54,20 +54,24 @@ async function addUser() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     userName = checkAndGetName(userName);
-    let initials = getNameLetters(userName);
-    if(users.length == 0) await pushUser(userName, email, password, initials);
-    else await checkMail(userName, email, password, initials);
-    console.clear();
+    if (userName) {
+        let initials = getNameLetters(userName);
+        if(users.length == 0) await pushUser(userName, email, password, initials);
+        else await checkMail(userName, email, password, initials);
+        console.clear();
+    }
 }
 
 
 /** 
- * That function checks if the user name inlcudes two or only one name. If its only one name, it defines a shortletter as second name. 
+ * That function checks if the user name inlcudes two or only one name. If its only one name, an error is displayed. 
  */
 function checkAndGetName(userName) {
     let name = userName.value.split(' ');
     name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1);
-    if(name.length == 1) return name[0] + ' ' + name[0].charAt(0);
+    if(name.length == 1) {
+        document.getElementById('name-error').classList.remove('d-none');
+    }
     else {
         name[1] = name[1].slice(0, 1).toUpperCase() + name[1].slice(1);
         return name[0] + ' ' + name[1];

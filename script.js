@@ -107,17 +107,7 @@ let selectedNavItem = 0;
  * @param {number} n - The id of the category/tab in the nav
  */
 function markNavItem(n) {
-    unmarkAllNAvItems();
-    selectedNavItem = n;
     document.getElementById(`${n}`).classList.add('selected-nav-item');  
-}
-
-
-/**
- * That function unmarks all categories/tabs in the navbar.
- */
-function unmarkAllNAvItems() {
-    for (let i = 1; i < 5; i++) document.getElementById(`${i}`).classList.remove('selected-nav-item');
 }
 
 
@@ -135,7 +125,6 @@ setURL('https://simon-besenbaeck.developerakademie.net/smallest_backend_ever');
 
 
 async function init() {
-    // await deleteServerData()
     await downloadFromServer();
     usersContact = await JSON.parse(backend.getItem('usersContact')) || [];
     boardColumns =  await JSON.parse(backend.getItem('boardColumns')) || [[], [], [], []]; // compare with line 6
@@ -169,6 +158,7 @@ function renderSiteRelatedTemplate() {
     else if(window.location.pathname.includes('board.html')) initBoard(2);
     else if(window.location.pathname.includes('add_task.html')) initAddtask(3);
     else if(window.location.pathname.includes('contacts.html')) initContacts(4);
+    else if(window.location.pathname.includes('legal_notice.html')) markNavItem(5);
     
 }
 
@@ -286,19 +276,6 @@ function removeClasslist(id, classe) {
  */
 function doNotClose(event) {
     event.stopPropagation();
-}
-
-
-/**
- * That function gets the abbreviation of a given name (shortletter).
- * @param {string} name - name is a user/contact name
- * @returns an abbreviation, to letter from the name in uppercase.
- */
-function getNameLetters(name) {
-    let firstLetter = name.toString().charAt(0).toUpperCase();  
-    let index = name.indexOf(' '); 
-    let secondLetter = name.toString().charAt(index+1).toUpperCase();
-    return firstLetter + secondLetter;
 }
 
 

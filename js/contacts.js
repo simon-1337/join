@@ -154,16 +154,23 @@ function contactInfoPopupAbbreviationColoring(index) {
 
 
 ///////////////////////// CREATE  OR  SAVE   NEW CONTACT ////////////////////////////////////
+let firstAndLastName = false;
+let emailNotUnique = false;
+
+
 /** 
  * That function will be executet onsubmit in the 'new contact'/'edit contact' popup form. 
  */
 async function creatingOrSavingContact() {
+    firstAndLastName = false;
+    emailNotUnique = false;
     if(await createContact()) {
         closeContactsNewContactPopupFilled(); 
         renderContactsList();
         MoveToContact();
         showPopupWhenCreatedContact();
-    } else {
+    } 
+    else if (emailNotUnique) { 
         closeContactsNewContactPopupFilled();
         showPopupWhenNotCreatedContact();
     }
@@ -176,13 +183,26 @@ async function creatingOrSavingContact() {
 async function createContact() {
     setContactNameForLinking(); // used for moving to contact after creating (not necessary in responsive) (l. 63)
     if(addAllInputValuesToContact()) {
-        if(edittingNewContact) saveAllInputValuesToContact();
-        else contacts.push(newContact);
-        await addContact();
-        clearNewContact();
-        return true;
+        if (firstAndLastName) {
+            if(edittingNewContact) saveAllInputValuesToContact();
+            else contacts.push(newContact);
+            await addContact(); //on the server
+            clearNewContact();
+            return true;
+        } else {
+            displayErrorTwoNamesRequired()
+        }
     } else return false;
 }
+
+
+/**
+ * This function is used to display that there need to be a name and surname when creating a contact
+ */
+function displayErrorTwoNamesRequired() {
+    document.getElementById('name-error').classList.remove('d-none');
+}
+
 
 /** 
  * That function returns a boolean back, it checks if the 'new' or 'editted' email is already there or not.
@@ -195,8 +215,12 @@ function addAllInputValuesToContact() {
         addAbbreviationToContact('name');
         addColorToContact('color');
         return true;
-    } else return false;
+    } else { 
+        emailNotUnique = true;
+        return false;
+    }    
 }
+
 
 /**
  * The function, to assign the values getting by the user to the 'new contact' JSON object. 
@@ -213,14 +237,25 @@ function addInputValuesToContact(identifier) {
     }else newContact[identifier] = document.getElementById(identifier).value; 
 }
 
+
 /** 
  * That function return a boolean back, it checks whether a given email is  
  */
 function emailIsUnique(email) {
-    if(contacts.length > usersContact.length) for(let i = 0; i < contacts.length; i++) if(!(isEmailUnique(i, email))) return false;
-    else for(let i = 0; i < usersContact.length; i++) if(!(isEmailUnique(i, email))) return false;
+    if (onEditEmailIsEqualToNewEmail(email)) return true;
+    else if(contacts.length > usersContact.length) { 
+        for(let i = 0; i < contacts.length; i++) {
+            if(!(isEmailUnique(i, email))) return false;
+        }
+    }
+    else {
+        for(let i = 0; i < usersContact.length; i++) {
+            if(!(isEmailUnique(i, email))) return false;
+        }
+    }
     return true;
 }
+    
 
 /** 
  * That function checks whether an email is unique when 'editting'/'creating' a contact. 
@@ -232,7 +267,8 @@ function isEmailUnique(i, email) {
     if((i < usersContact.length) && (i < contacts.length)) {
         if(emailIsInUsersOrContacts(i, email)) return false;
         else return true;
-    } else if (i < contacts.length) {
+    } 
+    else if (i < contacts.length) {
         if(emailIsInContacts(i, email)) return false;
         else return true;
     } else if(i < usersContact.length) {
@@ -241,6 +277,20 @@ function isEmailUnique(i, email) {
     } 
     else return true;
 }
+
+
+/**
+ * This function checks if the email adress of the contact that is edited is equivalent to the email adress in newContact
+ * Otherwise the error that the email already exists will show up when one edits a contact and does not change the email address
+ * 
+ * @returns A condition to check if the email of the edited contact is equal to the one entered in the input field
+ */
+function onEditEmailIsEqualToNewEmail(email) {
+    if (edittingNewContact) {
+        return email == contacts[indexOfChoosedContactToEdit]['email'];
+    }
+}
+
 
 /** 
  * That function compares the given email to the emails of the arrays 'usersContact AND contacts'.
@@ -252,6 +302,7 @@ function emailIsInUsersOrContacts(i, email) {
     else return false; 
 }
 
+
 /** 
  * That function compares the given email to the emails of the array 'contacts'.
  * @param {number} i - i is the index in the arrays contacts OR usersContact
@@ -262,15 +313,17 @@ function emailIsInContacts(i, email) {
     else return false;
 }
 
+
 /** 
  * That function compares the given email to the emails of the array 'usersContact'.
  * @param {number} i - i is the index in the arrays contacts OR usersContact
  * @param {string} email - email is the given email, we compare other emails with (on uniqueness) 
  */
 function emailIsInUsersContact(i, email) {
-    if(email == userContact[i]['email']) return true;
+    if(email == usersContact[i]['email']) return true;
     else return false;
 }
+
 
 /** 
  * That function adds the abbreviation of the current user name, given from the input, to the abbreviation-key
@@ -280,6 +333,33 @@ function emailIsInUsersContact(i, email) {
 function addAbbreviationToContact(identifier) {
     newContact['abbreviation'] =  getNameLetters(document.getElementById(identifier).value);
 }
+
+
+/**
+ * That function gets the abbreviation of a given name (shortletter).
+ * @param {string} name - name is a user/contact name
+ * @returns an abbreviation, to letter from the name in uppercase.
+ */
+function getNameLetters(name) {
+    let firstLetter = name.toString().charAt(0).toUpperCase();  
+    let index = name.indexOf(' '); 
+    let secondLetter = name.toString().charAt(index+1).toUpperCase();
+    checkIfTwoNamesEntered(index);
+    return firstLetter + secondLetter;
+}
+
+
+/**
+ * This function is used to check if there were two names entered when creating the contact
+ * 
+ * @param {Number} index - The index of the empty space in the input fiel (-1 if no second name)
+ */
+function checkIfTwoNamesEntered(index) {
+    if (index >= 0) {
+        firstAndLastName = true;
+    }
+}
+
 
 /** 
  * That function adds a color of the current created user to the 'newContact' object. It uses the function:
@@ -393,7 +473,7 @@ function showPopupWhenNotCreatedContact() {
         removeClasslist(`contact-is-not-created-popup`,`d-none`);
         addClasslist(`pop-up-created-contact`,`background-color-red`);
         addClasslist(`pop-up-created-contact`,`contacts-created-popup-slideUp`);
-    }, 400);
+    }, 125);
     hidePopupCreatedContact();
 }
 
@@ -403,10 +483,10 @@ function showPopupWhenNotCreatedContact() {
 function hidePopupCreatedContact() {
     setTimeout(() => {
         removeClasslist(`pop-up-created-contact`,`contacts-created-popup-slideUp`);
-    }, 1300);
+    }, 2300);
     setTimeout(() => {
         cleaningTheCreatedContactPopupClasslists();
-    }, 1430);
+    }, 2330);
 }
 
 /** 

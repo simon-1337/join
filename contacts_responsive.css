@@ -345,6 +345,10 @@
             padding: 12px   7px 20px;
         }
 
+        .error {
+            margin-top: 42px;
+        }
+
         .contact {
             gap: 10px;
             padding: 8px 14px;
@@ -425,6 +429,10 @@
         max-width: unset;
         padding: 177px 0px 95px;
         overflow: unset;
+    }
+
+    .error {
+        margin-top: 38px;
     }
 
     .contacts-container-withLetter > p {
@@ -757,6 +765,10 @@
 
         .contacts-new-contact-popup-form {
             font-size: 14px;
+        }
+
+        .error {
+            margin-top: 30px;
         }
 
         .contacts-new-contact-popup-form-name, .contacts-new-contact-popup-form-email, .contacts-new-contact-popup-form-phone {

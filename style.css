@@ -113,7 +113,6 @@ a {
     right: 0;
     bottom: 0;
     overflow: hidden;
-
 }
 
 .page {
@@ -357,6 +356,12 @@ a {
 }
 
 /* ########## RESPONSIVE ########## */
+
+@media screen and (min-width: 1500px) {
+    .nav-item {
+        font-size: 14px;
+    }
+}
 
 
 @media screen and (max-width: 1010px) {

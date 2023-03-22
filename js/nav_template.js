@@ -14,7 +14,7 @@ function renderNavContent() {
     return `<a class="logo-img absolute" href="summary.html"><img class="logo-img" src="assets/img/logo-big.png"></a>
             <div class="nav-selection flex column" id="nav-selection">
                 <div class="nav-main-selection flex column" id="nav-main-selection"></div>
-                <a href="legal_notice.html" class="nav-item nav-legal-notice flex">
+                <a href="legal_notice.html" id="5" class="nav-item nav-legal-notice flex">
                     <img src="assets/img/legal-notice.png">
                     <p>Legal notice</p>
                 </a>

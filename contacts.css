@@ -40,6 +40,14 @@
     overflow: hidden;
 }
 
+.error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    margin-top: 50px;
+}
+
+
 .contact:hover {
     background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1));
     border-radius: 20px;

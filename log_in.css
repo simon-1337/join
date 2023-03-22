@@ -350,6 +350,7 @@ font-family: 'Noto Sans', sans-serif;
 @media(max-width: 740px) {
     .logPool {
         margin-top: 50px;
+        height: calc(100vh - 50px)
     }
 
     .logContainer {

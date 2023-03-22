@@ -369,6 +369,7 @@ function templateNewContactPopupFormInputs() {
                     <input type="text" id="name" name="name" placeholder="Name" required>
                     <img src="assets/img/add-contact-name-icon.png">
                 </div>
+                <span id="name-error" class="error d-none">Please enter your name and surname!</span>
                 <div class="contacts-new-contact-popup-form-email flex">
                     <input type="email" id="email" name="email" placeholder="Email" required>
                     <img src="assets/img/add-contact-email-icon.png">
@@ -431,7 +432,7 @@ function templateCreatedContactPopup() {
     return `<div class="pop-up-created-contact-full absolute flex d-none" id="pop-up-created-contact-full">
                 <div class="pop-up-created-contact flex" id="pop-up-created-contact">
                     <span class="contact-is-created-popup d-none" id="contact-is-created-popup">Contact succesfully created</span>
-                    <span class="contact-is-not-created-popup d-none" id="contact-is-not-created-popup">Email is already existing</span>
+                    <span class="contact-is-not-created-popup d-none" id="contact-is-not-created-popup">A user or contact with this Email adress already exists</span>
                 </div>
             </div>`;
 }

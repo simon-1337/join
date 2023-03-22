@@ -108,6 +108,12 @@ body {
     top: 28%;
 }
 
+.error {
+    color: red;
+    position: absolute;
+    margin-top: 48px;
+}
+
 .name {
     position: absolute;
     right: 4%;
