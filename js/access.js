@@ -396,6 +396,58 @@ function giveID() {
   
 
 
+  //// PAsSWORD INPUT FIELDS ////
+
+function showEye() {
+    let input = document.getElementById("password");
+    let lock = document.getElementById('lock');
+    let eyeCrossed = document.getElementById("eye-crossed");
+    let eye = document.getElementById('eye');
+    if (input.value.length > 0) {
+        displayCrossedEye(eyeCrossed, lock);
+    } else {
+        displayLock(eye, eyeCrossed, lock);
+    }
+}
+
+
+function displayCrossedEye(eyeCrossed, lock) {
+    eyeCrossed.classList.remove('d-none');
+    lock.classList.add('d-none');
+}
+
+
+function displayLock(eye, eyeCrossed, lock) {
+    lock.classList.remove('d-none');
+    if (!eye.classList.contains('d-none')) {
+        eye.classList.add('d-none')
+    }    
+    if (!eyeCrossed.classList.contains('d-none')) {
+        eyeCrossed.classList.add('d-none')
+    }   
+}
+
+
+function showPassword() {
+    let eye = document.getElementById('eye');
+    let eyeCrossed = document.getElementById('eye-crossed');
+    let input = document.getElementById('password');
+    eyeCrossed.classList.add('d-none');
+    eye.classList.remove('d-none');
+    input.type = 'text';
+}
+
+
+function notShowPassword() {
+    let eye = document.getElementById('eye');
+    let eyeCrossed = document.getElementById('eye-crossed');
+    let input = document.getElementById('password');
+    eyeCrossed.classList.remove('d-none');
+    eye.classList.add('d-none');
+    input.type = 'password';
+}
+
+
 
 
 

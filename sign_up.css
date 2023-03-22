@@ -96,10 +96,9 @@ body {
     width: 100%;
 }
 
-.lock {
-    position: absolute;
+.input-icon {
+    width: 16px; 
     right: 4%;
-    top: 24%;
 }
 
 .case {

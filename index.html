@@ -58,12 +58,14 @@
                         <div class="inputs">
                             <div class="input-relative">
                                 <input id="email" class="input" type="text" placeholder="Email" required>
-                                <img class="case" src="assets/img/add-contact-email-icon.png">
+                                <img class="input-icon vertically-center-absolute" src="assets/img/add-contact-email-icon.png">
                             </div>
 
                             <div class="input-relative">
-                                <input id="password" class="input" type="password" placeholder="Password" required>
-                                <img class="lock" src="assets/img/login-password-icon.png">
+                                <input id="password" class="input" type="password" placeholder="Password" oninput="showEye()" required>
+                                <img class="vertically-center-absolute input-icon" id="lock" src="assets/img/login-password-icon.png">
+                                <img src="assets/img/eye.png" id="eye" class="vertically-center-absolute input-icon lock pointer d-none" onclick="notShowPassword()">
+                                <img src="assets/img/eye-crossed.png" id="eye-crossed" class="vertically-center-absolute input-icon pointer d-none" onclick="showPassword()">
                             </div>
                         </div>
 

@@ -1,14 +1,15 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
-    
+
     display: flex;
     flex-direction: column;
 }
 
 
 
-.signContainer, .logPool {
+.signContainer,
+.logPool {
     -webkit-animation: fadeInFromNone 0.7s ease-out;
     -moz-animation: fadeInFromNone 0.7s ease-out;
     -o-animation: fadeInFromNone 0.7s ease-out;
@@ -30,6 +31,7 @@ body {
         display: block;
         opacity: 0;
     }
+
     75% {
         display: block;
         opacity: 0;
@@ -47,8 +49,8 @@ body {
     position: absolute;
     left: 50px;
     top: 50px;
-    
-    
+
+
     animation: joinLogo 1s ease-in-out;
     animation-direction: normal;
     z-index: 1;
@@ -66,39 +68,43 @@ body {
     display: none;
 }
 
-@keyframes joinLogo{
+@keyframes joinLogo {
     0% {
-      width: 200px;
-      left: 40%;
-      top: 40vh;
-      
+        width: 200px;
+        left: 40%;
+        top: 40vh;
+
     }
+
     50% {
         width: 200px;
         left: 40%;
         top: 40vh;
     }
+
     100% {
-      left: 50px;
-      top: 50px;
+        left: 50px;
+        top: 50px;
     }
 }
 
-@keyframes joinLogo2{
+@keyframes joinLogo2 {
     0% {
-      width: 200px;
-      left: 50%;
-      top: 40vh;
+        width: 200px;
+        left: 50%;
+        top: 40vh;
     }
+
     50% {
         width: 200px;
         left: 50%;
         top: 40vh;
     }
+
     100% {
-      width: 55px;
-      left: 35px;
-      top: 35px;
+        width: 55px;
+        left: 35px;
+        top: 35px;
     }
 }
 
@@ -133,14 +139,15 @@ body {
     cursor: pointer;
     transition: background-color 125ms, color 125ms, border 125ms, box-shadow 125ms ease-in-out;
     font-weight: bold;
-   }
+}
 
-   .signButton:hover {
+.signButton:hover {
     background-color: #29ABE2;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-   }
+}
 
-   .signButton1, .signButton2 {
+.signButton1,
+.signButton2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -153,30 +160,30 @@ body {
     transition: background-color 125ms, color 125ms, border 125ms, box-shadow 125ms ease-in-out;
     font-size: 17px;
     height: 100%;
-   }
+}
 
-   .signButton1 {
+.signButton1 {
     width: 120px;
     border: none;
-   }
+}
 
-   .signButton2 {
+.signButton2 {
     width: 130px;
     background-color: white;
-    border:#2A3647 1px solid;
+    border: #2A3647 1px solid;
     color: #2A3647;
-   }
+}
 
-   .signButton1:hover {
+.signButton1:hover {
     background-color: #29ABE2;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-   }
+}
 
-   .signButton2:hover {
+.signButton2:hover {
     color: #29ABE2;
-    border:#29ABE2 2px solid;
+    border: #29ABE2 2px solid;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-   }
+}
 
 .signText {
     font-size: 20px;
@@ -197,11 +204,11 @@ body {
 
 .logContainer {
     width: 600px;
-background-color: #FFFFFF;
-border-radius: 30px;
-position: relative;
-padding: 30px 130px;
-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    position: relative;
+    padding: 30px 130px;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
 .logPool1 {
@@ -223,11 +230,10 @@ box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 
 .logText {
     font-size: 60px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .input-and-check-and-btns {
-    
     align-items: center;
 }
 
@@ -255,16 +261,10 @@ box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     width: 100%;
 }
 
-.case {
-    position: absolute;
-    right: 8%;
-    top: 27%;
-}
 
-.lock {
-    position: absolute;
+.input-icon {
     right: 8%;
-    top: 27%;
+    width: 18px;
 }
 
 .inputCheck {
@@ -285,14 +285,15 @@ box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 
 .checkContainer {
     display: flex;
-    align-items: center;;
+    align-items: center;
+    ;
 }
 
 .forgotText {
-text-decoration: none;
-color: #94D5F1;
-font-size: 13px;
-font-family: 'Noto Sans', sans-serif;
+    text-decoration: none;
+    color: #94D5F1;
+    font-size: 13px;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .checkText {
@@ -312,7 +313,7 @@ font-family: 'Noto Sans', sans-serif;
 
 .indexError {
     padding-top: 5px;
-    color: red;   
+    color: red;
 }
 
 .input-relative {
@@ -327,18 +328,20 @@ font-family: 'Noto Sans', sans-serif;
         top: 35px;
     }
 
-    @keyframes joinLogo{
+    @keyframes joinLogo {
         0% {
-          width: 200px;
-          left: 30%;
-          top: 40vh;
-          
+            width: 200px;
+            left: 30%;
+            top: 40vh;
+
         }
+
         50% {
             width: 200px;
             left: 30%;
             top: 40vh;
         }
+
         100% {
             width: 55px;
             left: 35px;
@@ -363,95 +366,96 @@ font-family: 'Noto Sans', sans-serif;
     }
 }
 
-    @media(max-width: 530px) {
-        .logPool {
-            margin-top: 66px;
-            justify-content: space-evenly;
-            height: 89vh;
-        }
-    
-        .logContainer {
-            width: 350px;
-            padding: 30px;
-        }
+@media(max-width: 530px) {
+    .logPool {
+        margin-top: 66px;
+        justify-content: space-evenly;
+        height: 89vh;
+    }
 
-        .check-and-btns {
-            width: 100%;
-        }
+    .logContainer {
+        width: 350px;
+        padding: 30px;
+    }
 
-        .signContainer {
+    .check-and-btns {
+        width: 100%;
+    }
+
+    .signContainer {
         display: none;
-        }
+    }
 
-        .signContainer2 {
-            display: unset;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .signContainer2 {
+        display: unset;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .underline {
-            width: 130px;
-            height: 4px;
-        }
+    .underline {
+        width: 130px;
+        height: 4px;
+    }
 
-            
-            .checkPool {
-                flex-direction: column-reverse;
-                gap: 20px;
-            }
 
-            .buttonContainer {
-                flex-direction: column;
-                align-items: center;
-                gap: 14px;
-                height: 110px;
-            }
-            
-            .signButton1, .signButton2 {
-                width: 170px;
-                font-size: 14px;
-                padding: 14px;
-            }
+    .checkPool {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
 
-            .signButton1 {
-                border: none;
-            }
+    .buttonContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        height: 110px;
+    }
 
-            .logText {
-                font-size: 45px;
-            }
+    .signButton1,
+    .signButton2 {
+        width: 170px;
+        font-size: 14px;
+        padding: 14px;
+    }
 
-            .underline {
-                width: 92px;
-            }
+    .signButton1 {
+        border: none;
+    }
+
+    .logText {
+        font-size: 45px;
+    }
+
+    .underline {
+        width: 92px;
+    }
 
     @media screen and (max-height: 815px) {
         .logContainer {
             padding: 8px 30px 16px 30px;
         }
-    
+
         .logPool1 {
             gap: 13px;
         }
-    
+
         .logo-and-underline {
             gap: 4px;
         }
-    
+
         .input-and-check-and-btns {
             gap: 20px;
         }
-    
+
         .inputs {
             gap: 20px;
         }
-    
+
         .check-and-btns {
             gap: 20px;
         }
-    
+
         .checkPool {
             gap: 12px;
         }
@@ -460,187 +464,193 @@ font-family: 'Noto Sans', sans-serif;
 
 
 
-        @media(max-width: 390px) {
-            .logContainer {
-                width: 320px;
-            }
+@media(max-width: 390px) {
+    .logContainer {
+        width: 320px;
+    }
+}
+
+
+
+@media(max-width: 350px) {
+    .joinLogo {
+        z-index: 3;
+    }
+
+    @keyframes joinLogo {
+        0% {
+            width: 150px;
+            left: 25%;
+            top: 40vh;
+            opacity: 0;
+            z-index: 3;
         }
 
+        25% {
+            opacity: 0;
+        }
 
+        50% {
+            width: 150px;
+            left: 25%;
+            top: 40vh;
 
-            @media(max-width: 350px) {
-                .joinLogo {
-                    z-index: 3;
-                }
+            opacity: 0;
+        }
 
-                @keyframes joinLogo{
-                    0% {
-                      width: 150px;
-                      left: 25%;
-                      top: 40vh;
-                      opacity: 0;
-                      z-index: 3;
-                    }
-                    25% {
-                        opacity: 0;
-                    }
-                    50% {
-                        width: 150px;
-                        left: 25%;
-                        top: 40vh;
+        78% {
+            opacity: 0;
+        }
 
-                        opacity: 0;
-                    }
-                    78% {
-                        opacity: 0;
-                    }
-                    100% {
-                        opacity: 1;
-                        width: 55px;
-                        left: 35px;
-                        top: 35px;
-                    }
-                }
-
-               .joinLogo2 {
-                    width: 70px;
-                    display: unset;
-                    opacity: 0;
-                   z-index: 3;
-                   
-                }
-
-                @keyframes joinLogo2{
-                    0% {
-                      width: 150px;
-                      left: 25%;
-                      top: 40vh;
-                      opacity: 1;
-                      z-index: 5;
-                    }
-                    25% {
-                        opacity: 1;
-                       
-                    }
-
-                    50% {
-                        width: 150px;
-                        left: 25%;
-                        top: 40vh;
-
-                        opacity: 1;
-                    }
-                    75% {
-                        opacity: 1;
-                    }
-                    100% {
-                      width: 55px;
-                      left: 35px;
-                      top: 35px;
-                      opacity: 0;
-                      display:none;
-                    }
-                }
-
-                .logContainer {
-                    width: 300px;
-                    padding: 20px;
-                    height: unset;
-                }
-
-                .logText {
-                font-size: 44px;
-                }
-            
-                .underline {
-                width: 92px;
-                }
-
-                .checkPool {
-                    width: 100%;
-                }
-
-                .input-and-check-and-btns {
-                    gap: 23px;
-                }
-
-                .input {
-                    width:87%;
-                }
-
-                .lock {
-                    right: 20%;
-                    top: 26.5%;
-                }
-
-                .case {
-                    right: 20%;
-                    top: 26.5%;
-                }
-
-                .signButton1, .signButton2 {
-                    font-size: 14px;
-                    width: 170px;
-                }
-
-                .signContainer {
-                    margin-top: 39px;
-                }
-
-                .logPool {
-                    padding-top: 124px;
-                    height: 100vh;
-                    margin-top: unset;
-                }
-            
-
-                .animationContainer {
-            -webkit-animation: intro 2s ease-in-out;
-            -moz-animation: intro 2s ease-in-out;
-            -o-animation: intro 2s ease-in-out;
-            animation: intro 2s ease-in-out;
-            
-           
-            height: 100vh;
-                }
-
-                @keyframes intro {
-                    0% {
-                        display: block;
-                        opacity: 1;
-                        background-color: #2A3647;
-                    }
-                    20% {
-                        display: block;
-                        opacity: 1;
-                        background-color: #2A3647;
-                    }
-                    40% {
-                        display: block;
-                        opacity: 1;
-                        background-color: #2A3647;
-                    }
-                    50% {
-                        display: block;
-                        opacity: 1;
-                        background-color: #2A3647;
-                    }
-                    75% {
-                        opacity: 1;
-                        display: block;
-                        opacity: 1;
-                    }
-                    90% {
-                        background-color: #2A3647;
-                        opacity: 1;
-                    }
-                    100% {
-                        background-color: #2A3647;
-                        display: block;
-                       opacity: 1;
-                    }
-            }
+        100% {
+            opacity: 1;
+            width: 55px;
+            left: 35px;
+            top: 35px;
+        }
     }
-    
 
-    
+    .joinLogo2 {
+        width: 70px;
+        display: unset;
+        opacity: 0;
+        z-index: 3;
+
+    }
+
+    @keyframes joinLogo2 {
+        0% {
+            width: 150px;
+            left: 25%;
+            top: 40vh;
+            opacity: 1;
+            z-index: 5;
+        }
+
+        25% {
+            opacity: 1;
+
+        }
+
+        50% {
+            width: 150px;
+            left: 25%;
+            top: 40vh;
+
+            opacity: 1;
+        }
+
+        75% {
+            opacity: 1;
+        }
+
+        100% {
+            width: 55px;
+            left: 35px;
+            top: 35px;
+            opacity: 0;
+            display: none;
+        }
+    }
+
+    .logContainer {
+        width: 300px;
+        padding: 20px;
+        height: unset;
+    }
+
+    .logText {
+        font-size: 44px;
+    }
+
+    .underline {
+        width: 92px;
+    }
+
+    .checkPool {
+        width: 100%;
+    }
+
+    .input-and-check-and-btns {
+        gap: 23px;
+    }
+
+    .input {
+        width: 87%;
+    }
+
+    .input-icon {
+        right: 20%;
+        top: 26.5%;
+    }
+
+    .signButton1,
+    .signButton2 {
+        font-size: 14px;
+        width: 170px;
+    }
+
+    .signContainer {
+        margin-top: 39px;
+    }
+
+    .logPool {
+        padding-top: 124px;
+        height: 100vh;
+        margin-top: unset;
+    }
+
+
+    .animationContainer {
+        -webkit-animation: intro 2s ease-in-out;
+        -moz-animation: intro 2s ease-in-out;
+        -o-animation: intro 2s ease-in-out;
+        animation: intro 2s ease-in-out;
+
+
+        height: 100vh;
+    }
+
+    @keyframes intro {
+        0% {
+            display: block;
+            opacity: 1;
+            background-color: #2A3647;
+        }
+
+        20% {
+            display: block;
+            opacity: 1;
+            background-color: #2A3647;
+        }
+
+        40% {
+            display: block;
+            opacity: 1;
+            background-color: #2A3647;
+        }
+
+        50% {
+            display: block;
+            opacity: 1;
+            background-color: #2A3647;
+        }
+
+        75% {
+            opacity: 1;
+            display: block;
+            opacity: 1;
+        }
+
+        90% {
+            background-color: #2A3647;
+            opacity: 1;
+        }
+
+        100% {
+            background-color: #2A3647;
+            display: block;
+            opacity: 1;
+        }
+    }
+}

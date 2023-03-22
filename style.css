@@ -72,6 +72,10 @@ html, body {
     position: fixed;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 p {
     margin: 0;
 }
@@ -95,6 +99,15 @@ a {
 .legal-notice-wapper {
     padding: 9px;
 }
+
+.vertically-center-absolute {
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+}
+
 
 /* colors:
     blue/gray nav-background: #2A3647
