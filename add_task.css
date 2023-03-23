@@ -77,6 +77,27 @@ h1 {
     font-family: 'inter';
 }
 
+.category-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 2px;
+}
+
+.prio-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 72px;
+}
+
+.prio-error-edit {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 72px;
+}
+
 .dropdown {
     height: 40px;
     display: flex;

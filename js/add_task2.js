@@ -205,24 +205,64 @@ function clearAddTask() {
  */
 async function createTask() {
     let currentTask = task; //to be able to reuse functions in edit task
-    addInputValuesToTask(currentTask, 'title');
-    addInputValuesToTask(currentTask, 'description');
-    addInputValuesToTask(currentTask, 'due-date');
-    changeSubtasksStatus(currentTask);
-    addPriotityToTask(currentTask);
-    pushAssignedContactsToTask(currentTask);
-    pushAssignedUserContactsToTask(currentTask);
-    pushTaskToTodo();
-    await addBoard();
-    switchToBoard();
+    if (categoryHasBeenSelected(currentTask) && addPriotityToTask(currentTask)) {
+        addInputValuesToTask(currentTask, 'title');
+        addInputValuesToTask(currentTask, 'description');
+        addInputValuesToTask(currentTask, 'due-date');
+        changeSubtasksStatus(currentTask);
+        pushAssignedContactsToTask(currentTask);
+        pushAssignedUserContactsToTask(currentTask);
+        pushTaskToTodo();
+        startSlideUPAnimation()
+        closeBoardAddtaskPopupFilled()
+        await addBoard();
+        switchToBoard();
+    }
+}
+
+
+/**
+ * This function is used to check if a category has been selected when creating the task
+ * 
+ * @param {JSON} currentTask - the task currently in creation
+ * @returns Boolean value
+ */
+function categoryHasBeenSelected(currentTask) {
+    if (currentTask['category'] != "") {
+        stopDisplayingError('category-error')
+        return true;
+    } else {
+        displayErrorCategorySelectionMissing();
+        return false;
+    }
+   
+}
+
+
+/**
+ * This function stops displaying the error that something needs to be selected if it has been selected already
+ */
+function stopDisplayingError(id) {
+    let error = document.getElementById(id);
+    if (!error.classList.contains('d-none')) {
+        error.classList.add('d-none');
+    }
+}
+
+
+/**
+ * This function is used to display the message that a category needs to be selected to create a task
+ */
+function displayErrorCategorySelectionMissing() {
+    document.getElementById('category-error').classList.remove('d-none');
 }
 
 
 /**
  * This function adds the value of the forwarded inputfield to the task currently in creation
  * 
- * @param {Element} currentTask - the task currently in creation 
- * @param {*} identifier - the identifier(id) of the input field whichs value is added to the task in creation
+ * @param {JSON} currentTask - the task currently in creation 
+ * @param {Element} identifier - the identifier(id) of the input field whichs value is added to the task in creation
  */
 function addInputValuesToTask(currentTask, identifier) {
     currentTask[identifier] = document.getElementById(identifier).value;
@@ -230,17 +270,43 @@ function addInputValuesToTask(currentTask, identifier) {
 
 
 /**
- * This function adds the selected priority to the task in creation
+ * This function adds the selected priority to the task in creation and checks if the priority has been selected
  * 
  * @param {Object} currentTask - the task currently in creation
  */
 function addPriotityToTask(currentTask) {
+    let check = 0;
     for (let i = 0; i < priorities.length; i++) {
         let btn = document.getElementById(priorities[i]['name']); //id of the btns equals name of the priority
         if (btn.hasAttribute('style')) {
             currentTask['prior'] = priorities[i];
+            check++;
         }
     }
+    if (checkIfPrioHasBeenSelected(check)) {
+        stopDisplayingError('prio-error')
+        return true;
+    } else {
+        displayErrorPrioSelectionMissing()
+        return false;
+    }
+}
+
+/**
+ * This function checks if there has been a priority to the task
+ * 
+ * @param {Number} check - The number of priorities that have been selected 
+ * @returns a condition checking if check is equal to 1
+ */
+function checkIfPrioHasBeenSelected(check) {
+    return check == 1;
+}
+
+/**
+ * This function is used to display the message that a priority needs to be selected to create a task
+ */
+function displayErrorPrioSelectionMissing() {
+    document.getElementById('prio-error').classList.remove('d-none');
 }
 
 
@@ -261,7 +327,7 @@ function pushAssignedContactsToTask(currentTask) {
 /**
  * This function adds the selected users (either the logged in or others) to task in creation
  * 
- * @param {Object} currentTask - the task currently in creation
+ * @param {JSON} currentTask - the task currently in creation
  */
 function pushAssignedUserContactsToTask(currentTask) {
     let checkboxes = document.querySelectorAll('.users-contacts-cb:checked'); //get all selected contacts checkboxes
@@ -289,7 +355,7 @@ function currentUserIsSelected(checkbox) {
 /**
  * This function adds the current user to the created task, if indexOfCurrentUser >= 0 (thus is not a guest user)
  * 
- * @param {Object} currentTask - The task which gets created 
+ * @param {JSON} currentTask - The task which gets created 
  */
 function addCurrentUserToTeam(currentTask) {
     if (indexOfCurrentUser >= 0) {
@@ -301,7 +367,7 @@ function addCurrentUserToTeam(currentTask) {
 /**
  * This function checks if a subtask is already ticked (completed) and safes the status of each subtask in the current task
  * 
- * @param {Element} currentTask - the task currently in creation 
+ * @param {JSON} currentTask - the task currently in creation 
  */
 function changeSubtasksStatus(currentTask) {
     currentTask['finished-subtasks'] = 0;
@@ -319,8 +385,8 @@ function changeSubtasksStatus(currentTask) {
 /**This function resets every status of the subtasks to false and reduces the subtask counter
  * Important for the case a subtask is not anymore checked
  * 
- * @param {Element} currentTask - the task currently in creation
- * @param {int} i - the position/index of the current task, to now on which position the subtask status needs to be reseted */
+ * @param {JSON} currentTask - the task currently in creation
+ * @param {string} i - the position/index of the current task, to now on which position the subtask status needs to be reseted */
 function resetSubtaskStatusAndFinishCounter(currentTask, i) {
     currentTask['status-subtasks'][i] = false;
 }

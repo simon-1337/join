@@ -396,8 +396,12 @@ function giveID() {
   
 
 
-  //// PAsSWORD INPUT FIELDS ////
+  //// PASSWORD INPUT FIELDS ////
 
+
+/**
+ * This function manages the actions to either display the crossed eye instead of the lock in the password input field or vice versa
+ */
 function showEye() {
     let input = document.getElementById("password");
     let lock = document.getElementById('lock');
@@ -411,12 +415,25 @@ function showEye() {
 }
 
 
+/**
+ * This function is used to display the crossed eye instead of the lock
+ * 
+ * @param {Element} eyeCrossed - The image of a crossed eye
+ * @param {Element} lock - The image of a lock 
+ */
 function displayCrossedEye(eyeCrossed, lock) {
     eyeCrossed.classList.remove('d-none');
     lock.classList.add('d-none');
 }
 
 
+/**
+ * This function is used to stop displaying the crossed and the not crossed eye and instead display the lock
+ * 
+ * @param {Element} eye - The image of an eye
+ * @param {Element} eyeCrossed - The image of a crossed eye
+ * @param {Element} lock - The image of a lock 
+ */
 function displayLock(eye, eyeCrossed, lock) {
     lock.classList.remove('d-none');
     if (!eye.classList.contains('d-none')) {
@@ -428,6 +445,9 @@ function displayLock(eye, eyeCrossed, lock) {
 }
 
 
+/**
+ * This function is used to display the eye (not crossed) and show the password in clear text
+ */
 function showPassword() {
     let eye = document.getElementById('eye');
     let eyeCrossed = document.getElementById('eye-crossed');
@@ -438,6 +458,9 @@ function showPassword() {
 }
 
 
+/**
+ * This function is used to stop displaying the eye (not crossed) and also stop showing password in clear text
+ */
 function notShowPassword() {
     let eye = document.getElementById('eye');
     let eyeCrossed = document.getElementById('eye-crossed');
@@ -451,7 +474,7 @@ function notShowPassword() {
 
 
 
-  /**
+/**
  * This function manages following:
  * - Prevents the form from refreshing the page
  */

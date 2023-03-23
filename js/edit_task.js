@@ -221,15 +221,18 @@ function addDisplayNoneToSubtaskIfEmpty(subtasks) {
  */
 async function saveChanges(columm, ticket) {
     let currentTask = boardColumns[columm][ticket];
-    addInputValuesToTask(currentTask, 'title'); //in add_task.js
-    addInputValuesToTask(currentTask, 'description'); //in add_task.js
-    addInputValuesToTask(currentTask, 'due-date'); //in add_task.js
-    addPriotityToTask(currentTask);
-    pushAssignedContactsToTask(currentTask);
-    pushAssignedUserContactsToTask(currentTask);
-    changeSubtasksStatus(currentTask);
-    await addBoard();
-    taskEditted = true;
+    if (addPriotityToTask(currentTask)) {
+        addInputValuesToTask(currentTask, 'title'); //in add_task.js
+        addInputValuesToTask(currentTask, 'description'); //in add_task.js
+        addInputValuesToTask(currentTask, 'due-date'); //in add_task.js
+        addPriotityToTask(currentTask);
+        pushAssignedContactsToTask(currentTask);
+        pushAssignedUserContactsToTask(currentTask);
+        changeSubtasksStatus(currentTask);
+        renderTicketInfoPopupContainer(columm, ticket)
+        await addBoard();
+        taskEditted = true;
+    }
 }
 
 

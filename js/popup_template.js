@@ -110,7 +110,7 @@ function templateTicketInfoPopupAssignedTo(column, ticket) {
  * @returns a html template for the edit container (in board.js to edit a task) 
  */
 function templateTicketEditing(column, ticket) {
-    return /*html*/`<form class="add-task-form-style-board-wrapper column flex" onsubmit="saveChanges(${column}, ${ticket}), renderTicketInfoPopupContainer(${column}, ${ticket}); return false">      
+    return /*html*/`<form class="add-task-form-style-board-wrapper column flex" onsubmit="saveChanges(${column}, ${ticket}); return false">      
                         <div class="add-task-form-style-board" id="add-task-form-style-board"></div>
                         <div class="create-task-btn-container-edit">
                             <button class="flex add-task-btn create-btn">
@@ -148,9 +148,10 @@ function templateAddTaskFormInBoardDuedatePrio(column, ticket) {
                 <span>Due Date</span>
                 <input type="date" id="due-date" value="${boardColumns[column][ticket]['due-date']}" class="add-task-input margin-bottom-24" min="2022-10-01" max="2030-12-31">
             </div>
-            <div class="w-100 flex column">
+            <div class="w-100 flex relative column">
                 <span>Prio</span>
                 <div class="add-task-prio-container margin-bottom-24" id="prio-container"></div>
+                <span id="prio-error" class="prio-error-edit d-none ">Please select a Priority!</span>
             </div>`;
 }
 

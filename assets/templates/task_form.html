@@ -1,4 +1,4 @@
-<form class="add-task-form-style-board" id="myform" onsubmit="createTask(), startSlideUPAnimation(), closeBoardAddtaskPopupFilled(); return false">      
+<form class="add-task-form-style-board" id="myform" onsubmit="createTask(); return false">      
     <h1>Add Task</h1>
     <div class="flex margin-bottom-24 add-task-form-child">
         <div class="add-task-column-left add-task-column flex column">
@@ -12,7 +12,7 @@
             </div>
             <div class="add-task-column-left-child flex column">
                 <span class=>Category</span>
-                <div class="margin-bottom-24">
+                <div class="margin-bottom-24 relative">
                     <div class="dropdown-container">
                         <div class="dropdown" id="category-dropdown-field" onclick="changeVisibility('category-dropdown')">
                             <div id="dropdown-text-category" class="flex category-dropdown-field-text">Select task category</div>
@@ -29,6 +29,7 @@
                         </div>
                     </div>
                     <div id="category-color-selection-ctn" class="flex d-none"></div>
+                    <span id="category-error" class="d-none category-error">Please select a category!</span>
                 </div>
             </div>
             <div class="add-task-column-left-child flex column">
@@ -58,9 +59,10 @@
                 <span>Due Date</span>
                 <input type="date" id="due-date" required class="add-task-input margin-bottom-24" value="2023-05-01">
             </div>
-            <div class="w-100 flex column">
+            <div class="w-100 flex relative column">
                 <span>Prio</span>
                 <div class="add-task-prio-container margin-bottom-24" id="prio-container"></div>
+                <span id="prio-error" class="prio-error d-none">Please select a Priority!</span>
             </div>
             <div class="w-100 flex column margin-bottom-24">
                 <span>Subtasks</span>
