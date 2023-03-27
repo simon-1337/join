@@ -106,6 +106,14 @@ function renderTemplateTicketProgressbar(n,j) {
 
 ////////////////// RESPONSIVE BUTTONS
 
+
+/**
+ * This function is used to display the correct Buttons
+ * (No displaying the move up or move down button if in the first or last column)
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @param {number} ticket - ticket is the row or the ticket-number in that column 
+ */
 function renderResponsiveButtons(column, ticket) {
     if (firstColumn(column)) {
         stopDisplayingBtnMoveUP(column, ticket);
@@ -119,16 +127,35 @@ function renderResponsiveButtons(column, ticket) {
 }
 
 
+/**
+ * This function is used to check if a ticket is in the first column
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @returns A condition checking if the value in column is equal to zero
+ */
 function firstColumn(column) {
     return column == 0;
 }
 
 
+/**
+ * This function is used to check if a ticket is in the last column
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @returns A condition checking if the value in column is equal equal to the index of the last column 
+ */
 function lastColumn(column) {
     return column == boardColumns.length - 1
 }
 
-
+/**
+ * This function is used to stop displaying the button to move up  
+ * Furthermore it is also responsible to start displaying the move down button
+ *  - This is because it could be that someone uses drag and drop and changes the ticket from last to first column
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @param {number} ticket - ticket is the row or the ticket-number in that column 
+ */
 function stopDisplayingBtnMoveUP(column, ticket) {
     let upBtn = document.getElementById('up-btn-' + column + '-' + ticket);
     let downBtn = document.getElementById('down-btn-' + column + '-' + ticket);
@@ -141,6 +168,14 @@ function stopDisplayingBtnMoveUP(column, ticket) {
 }
 
 
+/**
+ * This function is used to stop displaying the button to move down  
+ * Furthermore it is also responsible to start displaying the move up button
+ *  - This is because it could be that someone uses drag and drop and changes the ticket from first to last column
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @param {number} ticket - ticket is the row or the ticket-number in that column 
+ */
 function stopDisplayingBtnMoveDOWN(column, ticket) {
     let upBtn = document.getElementById('up-btn-' + column + '-' + ticket);
     let downBtn = document.getElementById('down-btn-' + column + '-' + ticket);
@@ -152,7 +187,12 @@ function stopDisplayingBtnMoveDOWN(column, ticket) {
     }
 }
 
-
+/**
+ * This function is used to display both buttons (move up and down)
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @param {number} ticket - ticket is the row or the ticket-number in that column 
+ */
 function displayAllButtons(column, ticket) {
     let upBtn = document.getElementById('up-btn-' + column + '-' + ticket);
     let downBtn = document.getElementById('down-btn-' + column + '-' + ticket);
