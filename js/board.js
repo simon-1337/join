@@ -5,6 +5,7 @@ let currentElementTicket;
 /** This variable is for storing the current ticket object when drag&drop. 
  * Familiar functions: startDragging(column, ticket), drop(column), pushNewElement(column), unshiftNewElement(column), removeAllHighlightAreas(i), highlightAreas(i) */
 let currentElement;
+let openingTicketCancelled = false;
 
 /** Render the board content with its tickets */
 function renderBoard() {
@@ -43,7 +44,12 @@ function renderBoardColumnContent(n) {
  * @returns the ticket template 
  */
 function renderTemplateTicket(n,j) {
-    return `<div class="ticket-container flex column cursor-p" id="ticket-container-${n}-${j}" draggable="true" ondragstart="startDragging(${n}, ${j})" onmousedown="highlightTicket(${n},${j})" onmouseup="removeHighlightTicket(${n},${j})" onclick="renderTicketInfoPopupContainer(${n}, ${j})"></div>`;
+    return `<div class="ticket-container flex column relative cursor-p" id="ticket-container-${n}-${j}" draggable="true" ondragstart="startDragging(${n}, ${j})" onmousedown="highlightTicket(${n},${j})" onmouseup="removeHighlightTicket(${n},${j})" onclick="renderTicketInfoPopupContainer(${n}, ${j})">
+                <div class="move-column-images">
+                    <img onclick="moveUP(${n},${j})" class="pointer" src="assets/img/arrow-up.png">
+                    <img onclick="moveDOWN(${n},${j})" class="pointer" src="assets/img/arrow-down.png">
+                </div>
+            </div>`;
 }
 
 /** 
@@ -411,4 +417,54 @@ function removeHighlightTicket(column, ticket) {
 
 
 
+////////////////// MOVE TICKET BY BUTTONS (RESPONSIVE) //////////////////////////
 
+
+/**
+ * This function is used to move a ticket up to a lower category in responsive view by clicking on buttons
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @param {number} ticket - ticket is the row or the ticket-number in that column
+ */
+async function moveUP(column, ticket) {
+    currentElement = boardColumns[column][ticket];
+    openingTicketCancelled = true;
+    if (column > 0) { 
+        boardColumns[currentElement['board']].splice(ticket, 1);
+        unshiftNewElement(column - 1);
+        currentElement = '';
+        await addBoard();
+        await init();
+    }
+    reverseOpeningTicketCancelled()
+}
+
+
+/**
+ * This function is used to move a ticket down to a higher category in responsive view by clicking on buttons
+ * 
+ * @param {number} column - column is the column number starting at 0
+ * @param {number} ticket - ticket is the row or the ticket-number in that column
+ */
+async function moveDOWN(column, ticket) {
+    currentElement = boardColumns[column][ticket];
+    openingTicketCancelled = true;
+    if (column < boardColumns.length - 1) { 
+        boardColumns[currentElement['board']].splice(ticket, 1);
+        unshiftNewElement(column + 1);
+        currentElement = '';
+        await addBoard();
+        await init();
+    }
+    reverseOpeningTicketCancelled()
+}
+
+
+/**
+ * This function is used to set back the boolean value of the variable which checks if opening the ticket function should be cancelled at the moment
+ */
+function reverseOpeningTicketCancelled() {
+    setTimeout(() => {
+        openingTicketCancelled = false;
+    }, 225); 
+}

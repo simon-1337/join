@@ -2,6 +2,7 @@ let categoryObject;
 let contactIconArray = []; //safes the indexes/positions of the seleceted Contacts in the contacts array
 let usersContactIconArray = [];
 let guestInIconArray = false;
+let indexOfColumnToPush;
 
 
 
@@ -13,7 +14,7 @@ async function initAddTask() {
     renderResponsiveHeaderTitle(); //in script.js
     await includeHTML();
     clearTask();
-    renderAddTask();
+    renderAddTask(0);
 }
 
 
@@ -59,7 +60,8 @@ async function includeHTML() {
 /**
  * This function renders the elements in the add task form
  */
-async function renderAddTask() {
+async function renderAddTask(columnIndex) {
+    indexOfColumnToPush = columnIndex;
     renderCategoryDropdown();
     renderCategoryColorSelection();
     renderContactsDropdown();

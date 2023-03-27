@@ -52,6 +52,18 @@
     height: 100%;
 }
 
+.move-column-images {
+    display: none;
+    position: absolute;
+    right: 16px;
+    gap: 6px;
+    padding: 9px;
+}
+
+.move-column-images img {
+    height: 25px;
+}
+
 .board-header-search-input-container {
     justify-content: flex-start;
     align-items: center;

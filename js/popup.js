@@ -98,13 +98,17 @@ function renderTemplateTicketInfoPopup() {
  * That function renders the content of a ticket info popup window.
  */
 function renderTicketInfoPopupContainer(column, ticket) {
-    let content;
-    content = document.getElementById('board-ticket-info-popup-full');
-    content.innerHTML = renderTemplateTicketInfoPopupContainer(column, ticket);
-    renderTemplateTicketInfoPopupContainerContent(column, ticket);
-    renderTicketInfoPopupTeammembers(column, ticket);
-    colorTicketElements(column, ticket);
-    content.classList.remove('d-none');
+    if (openingTicketCancelled) {
+        return
+    } else {
+        let content;
+        content = document.getElementById('board-ticket-info-popup-full');
+        content.innerHTML = renderTemplateTicketInfoPopupContainer(column, ticket);
+        renderTemplateTicketInfoPopupContainerContent(column, ticket);
+        renderTicketInfoPopupTeammembers(column, ticket);
+        colorTicketElements(column, ticket);
+        content.classList.remove('d-none');
+    }
 }
 
 /** 
@@ -242,12 +246,12 @@ function endSlideUPAnimation() {
 /** 
  * Rendering the AddTask template in board.html 
  */
-async function renderAddTaskInBoard() {
+async function renderAddTaskInBoard(columnIndex) {
     document.getElementById('board-addtask-popup-content').innerHTML = '';
     await includeHTML();
     clearTask();
     clearIconArray();
-    renderAddTask();  //in add_task.js
+    renderAddTask(columnIndex);  //in add_task.js
 }
 
 /** 
@@ -269,8 +273,8 @@ function renderPopupCreatedAddtask() {
 /** 
  * Render the popup when opening addtask in board. 
  */
-async function openBoardAddtaskPopup() {
-    await renderAddTaskInBoard()
+async function openBoardAddtaskPopup(columnIndex) {
+    await renderAddTaskInBoard(columnIndex)
     removeClasslist(`board-addtask-popup-full`, `hideBackgroundAnimation`);
     removeClasslist(`board-addtask-popup-full`,`d-none`);
     addClasslist(`board-addtask-popup-full`,`showBackgroundAnimation`);

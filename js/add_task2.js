@@ -212,7 +212,8 @@ async function createTask() {
         changeSubtasksStatus(currentTask);
         pushAssignedContactsToTask(currentTask);
         pushAssignedUserContactsToTask(currentTask);
-        pushTaskToTodo();
+        changeBoardInTask(currentTask);
+        pushTaskToColumn();
         startSlideUPAnimation()
         closeBoardAddtaskPopupFilled()
         await addBoard();
@@ -392,9 +393,17 @@ function resetSubtaskStatusAndFinishCounter(currentTask, i) {
 }
 
 
+/**
+ * This function is used to change the attribute board to the correct column
+ */
+function changeBoardInTask(currentTask) {
+    currentTask['board'] = indexOfColumnToPush;
+}
+
+
 /** This function adds the current task to todo/boardcolumns[0] */
-function pushTaskToTodo() {
-    boardColumns[0].push(task);
+function pushTaskToColumn() {
+    boardColumns[indexOfColumnToPush].push(task);
 }
 
 

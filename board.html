@@ -45,13 +45,13 @@
                             <div class="board-header flex">
                                 <div class="board-header-left flex">
                                     <p class="bold">Board</p>
-                                    <img class="board-header-addTask-button-resp cursor-p" onclick="openBoardAddtaskPopup()" src="assets/img/board-add-task-icon.png">
+                                    <img class="board-header-addTask-button-resp cursor-p" onclick="openBoardAddtaskPopup(0)" src="assets/img/board-add-task-icon.png">
                                 </div>
                                 <div class="board-header-right flex">
                                     <div class="board-header-search-wrapper relative flex">
                                         <div class="board-header-search-container flex" id="board-header-search-container">
                                             <div class="board-header-search-input-container flex" id="board-header-search-input-container">
-                                                <input class="board-header-search-input w-100 h-100" id="board-header-search-input" placeholder="Find Task" onblur="narrowInputField()" onfocus="widerInputField()" onkeyup="searchTasks()"></input>
+                                                <input class="board-header-search-input w-100 h-100" id="board-header-search-input" placeholder="Find Task" onblur="narrowInputField()" onfocus="widerInputField()" onkeyup="searchTasks()">
                                             </div>
                                             <img class="board-search-icon cursor-p" id="board-search-icon" src="assets/img/search-icon.png">
                                         </div>

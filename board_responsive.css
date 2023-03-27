@@ -141,6 +141,11 @@
 }
 
 @media screen and (max-width: 800px) {
+    .move-column-images {
+        display: flex;
+        flex-direction: column;
+    }
+    
     .board-wrapper {
         padding: 0 30px 130px;
     }
