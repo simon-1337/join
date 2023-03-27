@@ -46,8 +46,8 @@ function renderBoardColumnContent(n) {
 function renderTemplateTicket(n,j) {
     return `<div class="ticket-container flex column relative cursor-p" id="ticket-container-${n}-${j}" draggable="true" ondragstart="startDragging(${n}, ${j})" onmousedown="highlightTicket(${n},${j})" onmouseup="removeHighlightTicket(${n},${j})" onclick="renderTicketInfoPopupContainer(${n}, ${j})">
                 <div class="move-column-images">
-                    <img onclick="moveUP(${n},${j})" class="pointer" src="assets/img/arrow-up.png">
-                    <img onclick="moveDOWN(${n},${j})" class="pointer" src="assets/img/arrow-down.png">
+                    <img onclick="moveUP(${n},${j})" id="up-btn-${n}-${j}" class="pointer" src="assets/img/arrow-up.png">
+                    <img onclick="moveDOWN(${n},${j})" id="down-btn-${n}-${j}" class="pointer" src="assets/img/arrow-down.png">
                 </div>
             </div>`;
 }
@@ -61,6 +61,7 @@ function renderTicketContent(n, j) {
     renderTemplateTicketCategory(n,j);
     renderTemplateTicketDescription(n,j);
     renderTemplateTicketProgressbar(n,j);
+    renderResponsiveButtons(n,j);
     setProgressBar(n,j);
     renderTemplateTicketFooter(n,j);
     renderTicketTeam(n,j);
@@ -99,6 +100,67 @@ function renderTemplateTicketProgressbar(n,j) {
     if(boardColumns[n][j]['subtasks'] > 0) { 
         let ticketContent = document.getElementById(`ticket-container-${n}-${j}`);
         ticketContent.innerHTML += templateTicketProgressbar(n,j);
+    }
+}
+
+
+////////////////// RESPONSIVE BUTTONS
+
+function renderResponsiveButtons(column, ticket) {
+    if (firstColumn(column)) {
+        stopDisplayingBtnMoveUP(column, ticket);
+    }
+    else if (lastColumn(column)) {
+        stopDisplayingBtnMoveDOWN(column, ticket);
+    } 
+    else {
+        displayAllButtons(column, ticket)
+    }
+}
+
+
+function firstColumn(column) {
+    return column == 0;
+}
+
+
+function lastColumn(column) {
+    return column == boardColumns.length - 1
+}
+
+
+function stopDisplayingBtnMoveUP(column, ticket) {
+    let upBtn = document.getElementById('up-btn-' + column + '-' + ticket);
+    let downBtn = document.getElementById('down-btn-' + column + '-' + ticket);
+    if (!upBtn.classList.contains('d-none')) {
+        upBtn.classList.add('d-none');
+    }
+    if (downBtn.classList.contains('d-none')) {
+        downBtn.classList.remove('d-none');
+    }
+}
+
+
+function stopDisplayingBtnMoveDOWN(column, ticket) {
+    let upBtn = document.getElementById('up-btn-' + column + '-' + ticket);
+    let downBtn = document.getElementById('down-btn-' + column + '-' + ticket);
+    if (!downBtn.classList.contains('d-none')) {
+        downBtn.classList.add('d-none');
+    }
+    if (upBtn.classList.contains('d-none')) {
+        upBtn.classList.remove('d-none');
+    }
+}
+
+
+function displayAllButtons(column, ticket) {
+    let upBtn = document.getElementById('up-btn-' + column + '-' + ticket);
+    let downBtn = document.getElementById('down-btn-' + column + '-' + ticket);
+    if (downBtn.classList.contains('d-none')) {
+        downBtn.classList.remove('d-none');
+    }
+    if (upBtn.classList.contains('d-none')) {
+        upBtn.classList.remove('d-none');
     }
 }
 

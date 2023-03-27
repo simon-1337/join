@@ -376,7 +376,7 @@ function templateNewContactPopupFormInputs() {
                     <img src="assets/img/add-contact-email-icon.png">
                 </div>
                 <div class="contacts-new-contact-popup-form-phone flex">
-                    <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+                    <input type="number" id="phone" name="phone" placeholder="Phone" required>
                     <img src="assets/img/add-contact-phone-icon.png">
                 </div>
             </div>`;

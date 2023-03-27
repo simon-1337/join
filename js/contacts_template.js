@@ -52,7 +52,7 @@ function renderTemplateContactInfoPopupName(i) {
     wrapper.innerHTML += `
         <div class="contact-info-popup-name-and-addtask column flex">
             <p>${contacts[i]['name']}</p>
-            <div class="contact-info-popup-addTask-btn flex cursor-p" onclick="openBoardAddtaskPopup()">
+            <div class="contact-info-popup-addTask-btn flex cursor-p" onclick="openBoardAddtaskPopup(0)">
                 <p>+</p>
                 <p>Add Task</p>
             </div>
