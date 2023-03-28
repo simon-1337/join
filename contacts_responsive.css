@@ -429,6 +429,7 @@
         max-width: unset;
         padding: 177px 0px 95px;
         overflow: unset;
+        z-index: 1;
     }
 
     .error {
@@ -868,7 +869,7 @@
     }
 
     .contact {
-        gap: 50px;
+        gap: 13px;
     }
 
     /* NEW CONTACT BTN - POPUP */
@@ -896,7 +897,7 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 425px) {
     .contacts-container-withLetter > p {
         font-size: 18px;
         padding: 12px;

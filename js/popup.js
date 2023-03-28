@@ -404,6 +404,7 @@ function renderTemplateContactInfoPopupRespContactInfo(member) {
     content.innerHTML = renderTemplateContactInfoPopupAbbreviationAndName(member);
     content.innerHTML += renderTemplateContactInfoPopupTitleAndEditContactBtn(member);
     content.innerHTML += renderTemplateContactInfoPopupEmailAndPhone(member);
+    renderTemplateContactInfoPopupName(member);
 }
 
 /** 
@@ -411,7 +412,9 @@ function renderTemplateContactInfoPopupRespContactInfo(member) {
  */
 function closeContactInfoPopupResponsive() {
     addClasslist('contact-info-popup-responsive-full', 'd-none');
+    renderContactsList();
 }
+
 
 //////////////////// CONTACT: NEW CONTACT BTN - POPUP///////////////////////////////
 

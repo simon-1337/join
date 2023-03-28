@@ -82,9 +82,11 @@ function contactAbbreviationColoring(letter, number, j) {
  * @param {string} letter - letter is the currrent letter of the array 'alphabet'
  */
 function openContactInfoPopup(index, letter, number) {
+    document.getElementById('contacts-info-popup-container').innerHTML = '';
+    document.getElementById('contact-info-popup-responsive-full').innerHTML = ''; 
     setContactValuesForLinking(index, letter, number); // used for moving to contact after editting (not necessary in responsive) (l. 170)
-    if(window.innerWidth > 800) showContactInfoPopup(index, letter, number);
-    else showContactInfoPopupResponsive(index);
+    showContactInfoPopup(index, letter, number);
+    showContactInfoPopupResponsive(index);
 }
 
 /**
