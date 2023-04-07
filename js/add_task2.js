@@ -190,7 +190,7 @@ function clearImageToDarkBlue() {
  * the other pages the add task pop up is closed which leads to the same effect
  */
 function clearAddTask() {
-    if (window.location.pathname == '/add_task.html') {
+    if (window.location.pathname == '/add_task.html' || window.location.pathname == '/join/add_task.html') {
         initAddTask();
     } else {
         closeBoardAddtaskPopup()
