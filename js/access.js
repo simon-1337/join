@@ -1,4 +1,4 @@
-setURL('https://simon-besenbaeck.developerakademie.net/smallest_backend_ever');
+setURL('https://join.simon-besenbaeck.com/smallest_backend_ever');
 //Delete local Storage items
 localStorage.removeItem('usersEmail');
 localStorage.removeItem('currentUserHeaderData');
@@ -383,7 +383,7 @@ function giveID() {
    * @returns A fetch including the input and requestInit (method and Formdata)
    */
   function action(formData) {
-      const input = 'https://simon-besenbaeck.developerakademie.net/join/send_mail.php';
+      const input = 'https://join.simon-besenbaeck.com/send_mail.php';
       const requestInit = {
           method: 'post',
           body: formData

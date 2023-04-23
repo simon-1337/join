@@ -51,13 +51,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $message = "Hello,\n
         \nYou got invited to join our Team on Join.
         \nFollow this link to registrate for our application.
-        \nhttps://simon-besenbaeck.developerakademie.net/join\n
+        \nhttps://join.simon-besenbaeck.com\n
         \nSee you soon on our App,\n
         \nYour Join team\n";
 
         $recipient = $email;
         $subject = "Invitation to our Join Team";
-        $headers = "Form: noreply@https://simon-besenbaeck.developerakademie.net/join";
+        $headers = "Form: noreply@https://simon-besenbaeck.com";
 
         $result = mail($recipient, $subject, $message, $headers);
         print($result);
@@ -73,4 +73,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
 }
 
 
-$url="gruppe-348.developerakademie.net/join/reset_password.html?email=".$_POST['email']."&timeSTamp=".$timeSTamp;
+$url="join.simon-besenbaeck.com/reset_password.html?email=".$_POST['email']."&timeSTamp=".$timeSTamp;

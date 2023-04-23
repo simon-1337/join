@@ -50,14 +50,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $message = "Hello,\n
         \nFollow this link to reset your Join password for your  " . $email ." account.\n
-        \nhttps://simon-besenbaeck.developerakademie.net/join/reset_password.html?email=" . $email . "\n
+        \nhttps://join.simon-besenbaeck.developerakademie.net/reset_password.html?email=" . $email . "\n
         \nIf you didn't ask to reset your password, you can ignore this email.\n
         \nThanks,\n
         \nYour Join team\n";
 
         $recipient = $email;
         $subject = "Reset your password for Join App";
-        $headers = "Form: noreply@https://simon-besenbaeck.developerakademie.net";
+        $headers = "Form: noreply@https://simon-besenbaeck.com";
 
         $result = mail($recipient, $subject, $message, $headers);
         print($result);
@@ -73,4 +73,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
 }
 
 
-$url="simon-besenbaeck.developerakademie.net/join/reset_password.html?email=".$_POST['email']."&timeSTamp=".$timeSTamp;
+$url="join.simon-besenbaeck.com/reset_password.html?email=".$_POST['email']."&timeSTamp=".$timeSTamp;

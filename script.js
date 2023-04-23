@@ -121,7 +121,7 @@ function renderResponsiveHeaderTitle() {
 
 
 // ########## BACKEND ##########
-setURL('https://simon-besenbaeck.developerakademie.net/smallest_backend_ever');
+setURL('https://join.simon-besenbaeck.com/smallest_backend_ever');
 
 
 async function init() {
@@ -147,6 +147,33 @@ async function deleteServerData() {
     await backend.deleteItem('contacts');
     await backend.deleteItem('users');
 }
+
+
+/**
+ * That function gets the abbreviation of a given name (shortletter).
+ * @param {string} name - name is a user/contact name
+ * @returns an abbreviation, to letter from the name in uppercase.
+ */
+function getNameLetters(name) {
+    let firstLetter = name.toString().charAt(0).toUpperCase();  
+    let index = name.indexOf(' '); 
+    let secondLetter = name.toString().charAt(index+1).toUpperCase();
+    checkIfTwoNamesEntered(index);
+    return firstLetter + secondLetter;
+}
+
+
+/**
+ * This function is used to check if there were two names entered when creating the contact
+ * 
+ * @param {Number} index - The index of the empty space in the input fiel (-1 if no second name)
+ */
+function checkIfTwoNamesEntered(index) {
+    if (index >= 0) {
+        firstAndLastName = true;
+    }
+}
+
 
 
 /**
