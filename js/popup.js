@@ -210,8 +210,9 @@ function coloringTicketInfoPopupMembers(column, ticket, teamMember) {
 function closeTicketInfoPopup() {
     document.getElementById('board-ticket-info-popup-full').classList.add('d-none');
     document.getElementById('board-ticket-info-popup-full').innerHTML = '';
-    if(taskEditted) {
+    if(taskEditted || taskDeleted) {
         taskEditted = false;
+        taskDeleted = false;
         renderBoard();
         hideSomeTickets();
     }

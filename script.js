@@ -38,6 +38,7 @@ let hiddenTickets = [];
  */
 let taskEditted = false;
 
+let taskDeleted = false;
 
 // ##### CONTACTS #####
 let contacts = [];

@@ -303,6 +303,12 @@
         display: none;
     }
 
+    .delete-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+    }
+
     .ticket-info-popup-edit {
         width: 38px;
         height: 38px;

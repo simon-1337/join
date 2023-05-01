@@ -570,3 +570,33 @@ function reverseOpeningTicketCancelled() {
         openingTicketCancelled = false;
     }, 225); 
 }
+
+
+
+//// DELETE TASK SECTION ////
+
+
+async function deleteTask(column, ticket ) {
+    boardColumns[column].splice(ticket, 1);
+    taskDeleted = true;
+    await addBoard();
+    closeTicketInfoPopup();
+}
+
+
+/**
+ * This function is used to change the color of the delete button to light blue
+ */
+function deleteBtnToLightBlue() {
+    let img = document.getElementById('delete-btn');
+    img.src = './assets/img/delete-hover.png'
+}
+
+
+/**
+ * This function changes the image in the delete button to a darkblue version of it  
+ */
+function deleteBtnToDarkBlue() {
+    let img = document.getElementById('delete-btn');
+    img.src = './assets/img/delete.png'
+}

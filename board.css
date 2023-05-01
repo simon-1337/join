@@ -532,6 +532,26 @@
     justify-content: flex-end;
 }
 
+.delete-btn {
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid #2A3647;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+}
+
+.delete-btn img {
+    width: 20px;
+}
+
+.delete-btn:hover {
+    border: 2px solid #29ABE2;
+}
+
 .ticket-info-popup-edit {
     justify-content: center;
     align-items: center;

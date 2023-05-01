@@ -28,6 +28,7 @@ function renderTemplateTicketInfoPopupContainer(column, ticket) {
             <div class="ticket-info-popup-inner-container flex column h-100 w-100" id="ticket-info-popup-inner-container-${column}-${ticket}">
                 <div class="ticket-info-popup-wrapper w-100 flex column" id="ticket-info-popup-wrapper"></div>
                 <div class="ticket-info-popup-edit-container w-100 flex">
+                    <div onclick="deleteTask(${column}, ${ticket})" class="flex delete-btn cursor-p" onmouseover="deleteBtnToLightBlue()" onmouseout="deleteBtnToDarkBlue()"><img id="delete-btn" src="assets/img/delete.png"></div>
                     <div class="ticket-info-popup-edit flex cursor-p" onclick="renderTicketInfoEditting(${column}, ${ticket})"><img src="assets/img/pencil-white.png"></div>
                 </div>
             </div>
